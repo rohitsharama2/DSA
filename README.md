@@ -4,6 +4,7 @@ A structured DSA, Computer Science, System Design, and AI interview-preparation 
 
 ## Start here
 
+- [Concepts and worked solutions](handbook/DSA-CS-AI-Concepts-and-Solutions.md) - detailed explanations, diagrams, TypeScript solutions, practice exercises, and video lessons
 - `handbook/MAANG-DSA-AI-Interview-Handbook.pdf` - formatted study handbook
 - `handbook/MAANG-DSA-AI-Interview-Handbook.md` - editable source
 - `examples/README.md` - suggested structure for future solved problems
