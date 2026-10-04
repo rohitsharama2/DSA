@@ -4,6 +4,7 @@ A structured DSA, Computer Science, System Design, and AI interview-preparation 
 
 ## Start here
 
+- [Airbnb phase-wise interview preparation](airbnb/README.md) - current focus: a 12-week Airbnb-only roadmap with coding, system design, core values, and mock-interview readiness checks
 - [Concepts and worked solutions](handbook/DSA-CS-AI-Concepts-and-Solutions.md) - detailed explanations, diagrams, TypeScript solutions, practice exercises, and video lessons
 - `handbook/MAANG-DSA-AI-Interview-Handbook.pdf` - formatted study handbook
 - `handbook/MAANG-DSA-AI-Interview-Handbook.md` - editable source
