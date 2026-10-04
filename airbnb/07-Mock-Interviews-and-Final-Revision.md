@@ -29,6 +29,8 @@ Score problem framing, correctness, communication, testing, design reasoning, an
 
 During the final 48 hours, revise familiar patterns, stories, and design trade-offs. Keep practice light enough to arrive rested.
 
+**CodeSignal preparation:** Use the [dedicated assessment guide](CodeSignal-Assessment-Guide-and-Examples.md) for format-specific setup, worked TypeScript examples, and timed mocks.
+
 ---
 
 [Airbnb roadmap](README.md) · [Previous phase](06-Core-Values-and-Behavioral.md)

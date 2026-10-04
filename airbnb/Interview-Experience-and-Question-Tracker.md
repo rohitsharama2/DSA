@@ -2,6 +2,8 @@
 
 [Back to the Airbnb roadmap](README.md)
 
+**Study the answers:** [Full statements, examples, TypeScript solutions, and A/B model answer](Candidate-Questions-and-Solutions.md). For your immediate assessment, start with the [90-minute CodeSignal workbook](CodeSignal-90-Minute-Progressive-Workbook.md).
+
 ## How to use this report
 
 The user supplied **“Airbnb Senior SWE Interview Breakdown: The DP questions they asked + How I passed.”** This summary preserves its preparation points. It is one candidate's account, not official policy or a prediction of your interview. Distinguish firsthand questions, collected practice questions, personal advice, and speculation.
@@ -35,6 +37,17 @@ Classifications below are study guidance. Most full problem statements were not 
 | [ ] | [Design an A/B test with causal inference](https://prachub.com/interview-questions/design-an-a-b-test-with-causal-inference) | Collected practice | Experiment design; not DP | 5, optional |
 | [ ] | Partition Array Into Two Arrays To Minimize Sum Difference | Collected practice | Equal-size subsets, meet-in-the-middle | 3, stretch |
 | [ ] | Maximum Sum BST in Binary Tree | Collected practice | Postorder tree DP, validity, bounds, sums | 3, stretch |
+
+## Direct solution links
+
+1. [Menu order](Candidate-Questions-and-Solutions.md#1-most-cost-effective-menu-order)
+2. [Split stay](Candidate-Questions-and-Solutions.md#2-split-stay)
+3. [Work sessions](Candidate-Questions-and-Solutions.md#3-minimum-number-of-work-sessions)
+4. [Climbing stairs](Candidate-Questions-and-Solutions.md#4-min-cost-climbing-stairs)
+5. [Obstacle course](Candidate-Questions-and-Solutions.md#5-longest-valid-obstacle-course)
+6. [A/B test design](Candidate-Questions-and-Solutions.md#6-design-an-ab-test-with-causal-inference)
+7. [Equal-sized partition](Candidate-Questions-and-Solutions.md#7-partition-array-to-minimize-sum-difference)
+8. [Maximum sum BST](Candidate-Questions-and-Solutions.md#8-maximum-sum-bst-in-binary-tree)
 
 ## Resources mentioned by the candidate
 

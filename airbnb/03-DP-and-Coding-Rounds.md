@@ -33,6 +33,8 @@ Use these as practice targets, not official Airbnb round timings. Mix old patter
 
 **Readiness check:** Solve four of the last five mixed medium practice problems correctly within your rehearsal time without substantial hints. For DP, derive the recurrence aloud rather than reciting code.
 
+**Worked answers:** [All eight questions with statements, examples, and solutions](Candidate-Questions-and-Solutions.md).
+
 ## Candidate-report focus: phone screen and onsite coding
 
 The [supplied interview report](Interview-Experience-and-Question-Tracker.md) motivates extra DP practice. It is one account, not evidence that every Airbnb loop is DP-heavy. Use the following order after the basic exercises above.
@@ -74,6 +76,8 @@ Preserve the equal-cardinality requirement. Explore meet-in-the-middle: enumerat
 Return subtree validity, minimum, maximum, and sum from a postorder traversal. Update the best sum only for valid BST subtrees. Clarify the duplicate-key rule and whether an empty BST with sum zero is allowed; that changes all-negative cases. Include recursion-stack space.
 
 **Additional readiness check:** Independently solve the menu practice variant and a precisely specified split-stay variant, then explain an optimization and its complexity. A working baseline is a milestone; passing visible tests is not a proof of correctness.
+
+**CodeSignal preparation:** Use the [dedicated assessment guide](CodeSignal-Assessment-Guide-and-Examples.md) for format-specific setup, worked TypeScript examples, and timed mocks.
 
 ---
 

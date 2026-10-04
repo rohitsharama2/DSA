@@ -10,11 +10,13 @@
 - [ ] Write a 90-second introduction: current work, strongest contribution, and why this role fits.
 - [ ] Try one array/hash-map problem and one traversal problem without reading solutions.
 - [ ] Spend 20 minutes outlining a reservation service; mark unfamiliar concepts.
-- [ ] Start an error log using the template near the end of this file.
+- [ ] Start an error log using the [roadmap template](README.md#13-progress-and-error-log).
 
 **Output:** A role checklist, baseline gaps, and a realistic weekly study slot.
 
 **Readiness check:** You can name what the job requires and identify your three largest preparation gaps. If recruiter details are pending, continue foundations and keep the interview format marked unconfirmed.
+
+**CodeSignal preparation:** Use the [dedicated assessment guide](CodeSignal-Assessment-Guide-and-Examples.md) for format-specific setup, worked TypeScript examples, and timed mocks.
 
 ---
 

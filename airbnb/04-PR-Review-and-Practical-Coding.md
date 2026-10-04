@@ -2,6 +2,8 @@
 
 **Reference:** [Concepts and worked solutions](../handbook/DSA-CS-AI-Concepts-and-Solutions.md). Section numbers below refer to this guide.
 
+**Immediate assessment track:** [90-minute progressive workbook with all four levels solved](CodeSignal-90-Minute-Progressive-Workbook.md).
+
 **Time:** Week 7. Increase or reduce this phase after confirming the interview format.
 
 **Read:** Companion guide sections 16–17.
@@ -45,6 +47,8 @@ For each PR, record:
 - Questions requiring author clarification rather than speculative accusations.
 
 Check logic first, then authorization and data integrity, failure handling, and maintainability. Do not spend the session polishing naming while a booking race remains unexplained. Finish with a reasoned approve/request-changes recommendation for each practice PR.
+
+**CodeSignal preparation:** Use the [dedicated assessment guide](CodeSignal-Assessment-Guide-and-Examples.md) for format-specific setup, worked TypeScript examples, and timed mocks.
 
 ---
 

@@ -10,6 +10,10 @@
 
 **Prepared:** October 4, 2026.
 
+## Current priority: your 90-minute assessment
+
+Start with the [90-minute progressive coding workbook](CodeSignal-90-Minute-Progressive-Workbook.md): four levels, full TypeScript solution, regression cases, and a timed plan. Use the [candidate questions and worked answers](Candidate-Questions-and-Solutions.md) for all eight questions from the report. Duration is confirmed by you; ICA vs. custom format still depends on the invitation.
+
 ## 1. Scope and how to use this plan
 
 Use this file as your daily roadmap and open the separate phase files for detailed practice. Open the existing [concepts and worked solutions](../handbook/DSA-CS-AI-Concepts-and-Solutions.md) only for the topics assigned below; you do not need to work through the entire multi-company handbook first.
@@ -25,6 +29,7 @@ The target role, level, location, and interview date have not been supplied. Thi
 | Interview area to confirm | What to prepare | Study phases |
 | --- | --- | --- |
 | Recruiter conversation | Introduction, role fit, motivation, availability, questions about the process | 0 and 6 |
+| CodeSignal assessment, if included | Confirm GCA / ICA / custom format, practice the editor, timed coding and progressive tasks | [CodeSignal guide](CodeSignal-Assessment-Guide-and-Examples.md), phases 0–4 |
 | Technical screening / coding | Clarification, algorithms, correct TypeScript, tests, complexity, follow-ups | 1–3 |
 | Practical coding / code review, if included | Debugging, requirements, maintainability, asynchronous behavior, test selection | 4 |
 | System design, if included | Requirements, APIs, data model, consistency, scaling, failure handling | 5 |
@@ -36,6 +41,11 @@ The target role, level, location, and interview date have not been supplied. Thi
 Airbnb's official core-values preparation material describes at least one 45-minute interview with someone outside the functional team. It emphasizes specific experiences and reflection rather than technical vetting, and says the interviewer has not seen your resume. Give enough context for each story to stand alone. Confirm your scheduled format with the recruiter. [Official core-values preparation](https://cviprep.withairbnb.com/)
 
 ## Phase files
+
+- [90-minute CodeSignal progressive workbook — start here](CodeSignal-90-Minute-Progressive-Workbook.md)
+- [All eight candidate questions: statements and worked solutions](Candidate-Questions-and-Solutions.md)
+
+- [CodeSignal assessment guide with worked TypeScript examples](CodeSignal-Assessment-Guide-and-Examples.md) — platform setup, GCA/ICA practice, five examples, and timed mocks
 
 - [Phase 0 — Set the target and measure your baseline](00-Role-and-Baseline.md)
 - [Phase 1 — Foundations and confident TypeScript](01-Foundations-and-TypeScript.md)
@@ -108,6 +118,7 @@ Copy this row for every substantial exercise. A problem is ready for revision on
 
 ### Phase tracker
 
+- [ ] CodeSignal: Format confirmed, platform practice completed, and matching timed mock reviewed if included.
 - [ ] Phase 0: Role and baseline recorded.
 - [ ] Phase 1: Foundations readiness check passed.
 - [ ] Phase 2: Core algorithm mocks completed.
