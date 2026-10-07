@@ -1,5 +1,7 @@
 # CodeSignal: 90-Minute Progressive Coding Workbook
 
+**Next preparation:** [After CodeSignal: round-wise interview preparation](rounds/README.md).
+
 [Airbnb roadmap](README.md) · [Platform setup](CodeSignal-Assessment-Guide-and-Examples.md) · [Candidate questions and answers](Candidate-Questions-and-Solutions.md)
 
 **Your current priority:** Prepare for the 90-minute assessment. Use this workbook first. Duration alone does not prove the invitation is an ICA: custom assessments can also last 90 minutes. Until its exact label is available, this is our working preparation track.

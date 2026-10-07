@@ -4,7 +4,9 @@ A structured DSA, Computer Science, System Design, and AI interview-preparation 
 
 ## Start here
 
-- [Airbnb 90-minute CodeSignal preparation](airbnb/CodeSignal-90-Minute-Progressive-Workbook.md) - current priority, with a complete four-level TypeScript solution
+- [Airbnb round-wise interview guide](airbnb/rounds/README.md) - current entry point: recent DSA reports and solutions, system-design follow-ups, project/HM answers, and JS/TS/React preparation for Internationalization Infrastructure
+
+- [Airbnb 90-minute CodeSignal preparation](airbnb/CodeSignal-90-Minute-Progressive-Workbook.md) - assessment practice, with a complete four-level TypeScript solution
 - [Airbnb candidate questions and answers](airbnb/Candidate-Questions-and-Solutions.md) - all eight problem statements, worked solutions, examples, and complexity analysis
 
 - [Airbnb phase-wise interview preparation](airbnb/README.md) - current focus: a 12-week Airbnb-only roadmap with coding, system design, core values, and mock-interview readiness checks

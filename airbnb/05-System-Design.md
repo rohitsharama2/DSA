@@ -1,5 +1,7 @@
 # Phase 5 — Airbnb-context system design
 
+**Next preparation:** [Round-wise design questions and follow-up answers](rounds/02-System-Design-Questions-and-Followups.md).
+
 **Reference:** [Concepts and worked solutions](../handbook/DSA-CS-AI-Concepts-and-Solutions.md). Section numbers below refer to this guide.
 
 **Time:** Weeks 8–9.

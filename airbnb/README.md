@@ -1,4 +1,4 @@
-# Airbnb: Phase-Wise Interview Preparation
+# Airbnb: Round-Wise Interview Preparation
 
 **Focus:** Airbnb software engineering interviews only.
 
@@ -10,7 +10,20 @@
 
 **Prepared:** October 4, 2026.
 
-## Current priority: your 90-minute assessment
+## Start with your next interview round
+
+**Target role:** Internationalization Infrastructure, Application Platform, based on your supplied job description. **Preferred stack:** JavaScript/TypeScript and React. The role also requires backend and distributed-systems depth.
+
+Open the [round-wise interview guide](rounds/README.md). It links the 90-minute CodeSignal assessment, live DSA, PR review, system design, project discussion, hiring manager, and core values. The numbered phases below remain a foundations curriculum, not interview round numbers.
+
+- [DSA reports, questions and worked TypeScript solutions](rounds/01-DSA-Coding-Questions-and-Solutions.md)
+- [System-design questions and follow-up answers](rounds/02-System-Design-Questions-and-Followups.md)
+- [Project explanation workbook](rounds/03-Project-Deep-Dive.md)
+- [Hiring-manager questions and answer practice](rounds/04-Hiring-Manager-Questions-and-Answers.md)
+- [Role-specific JS/TS, React and i18n exercises](rounds/05-JS-TS-React-and-I18n.md)
+- [Research sources and dates](rounds/Research-Sources.md)
+
+## Your 90-minute assessment
 
 Start with the [90-minute progressive coding workbook](CodeSignal-90-Minute-Progressive-Workbook.md): four levels, full TypeScript solution, regression cases, and a timed plan. Use the [candidate questions and worked answers](Candidate-Questions-and-Solutions.md) for all eight questions from the report. Duration is confirmed by you; ICA vs. custom format still depends on the invitation.
 
@@ -18,7 +31,7 @@ Start with the [90-minute progressive coding workbook](CodeSignal-90-Minute-Prog
 
 Use this file as your daily roadmap and open the separate phase files for detailed practice. Open the existing [concepts and worked solutions](../handbook/DSA-CS-AI-Concepts-and-Solutions.md) only for the topics assigned below; you do not need to work through the entire multi-company handbook first.
 
-The target role, level, location, and interview date have not been supplied. This plan assumes general software engineering with a backend focus. Senior roles also require evidence of ownership and impact from real work; completing exercises alone cannot replace that experience. If the role is frontend, mobile, or ML, revise the specialist sections using its job description and recruiter guidance.
+The supplied role targets Internationalization Infrastructure and asks for 5+ years of relevant experience, distributed-systems work, and full-stack ownership. Exact level, location and interview schedule remain unconfirmed. Use the round-wise material for this role; the older phase schedule remains useful for foundations. Ownership and impact examples must come from real work.
 
 **Source limitation:** The [shared conversation](https://chatgpt.com/share/6ac1f3d0-8678-83e8-82b1-60f09ccdd96f) could not be retrieved. This plan uses the repository's existing learning preferences and the official Airbnb sources listed at the end; it does not claim to reproduce that conversation.
 

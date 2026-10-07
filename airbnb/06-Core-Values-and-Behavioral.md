@@ -1,5 +1,7 @@
 # Phase 6 — Core values, collaboration, and project depth
 
+**Next preparation:** [Hiring-manager expectations and answer practice](rounds/04-Hiring-Manager-Questions-and-Answers.md).
+
 **Reference:** [Concepts and worked solutions](../handbook/DSA-CS-AI-Concepts-and-Solutions.md). Section numbers below refer to this guide.
 
 **Time:** Week 10, with two short story-practice sessions every week from phase 0 onward.

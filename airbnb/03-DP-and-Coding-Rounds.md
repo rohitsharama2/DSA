@@ -1,5 +1,7 @@
 # Phase 3 — Dynamic programming and mixed timed coding
 
+**Next preparation:** [Recent reports and live DSA worked solutions](rounds/01-DSA-Coding-Questions-and-Solutions.md).
+
 **Reference:** [Concepts and worked solutions](../handbook/DSA-CS-AI-Concepts-and-Solutions.md). Section numbers below refer to this guide.
 
 **Time:** Weeks 5–6.
