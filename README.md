@@ -4,6 +4,10 @@ A structured DSA, Computer Science, System Design, and AI interview-preparation 
 
 ## Start here
 
+- [Agoda Staff interview preparation](agoda/rounds/README.md) - DSA patterns, worked TypeScript solutions, platform/code review, system design, and leadership strategy
+- [Google L5 interview preparation](google/rounds/README.md) - graph-heavy practice, coding follow-ups, worked TypeScript solutions, system design, and leadership strategy
+- [Shared Agoda / Google preparation strategy](handbook/Agoda-Google-Preparation-Strategy.md) - six-week plan, compressed plan, mock rubric, and progress tracker
+
 - [Airbnb round-wise interview guide](airbnb/rounds/README.md) - current entry point: recent DSA reports and solutions, system-design follow-ups, project/HM answers, and JS/TS/React preparation for Internationalization Infrastructure
 
 - [Airbnb 90-minute CodeSignal preparation](airbnb/CodeSignal-90-Minute-Progressive-Workbook.md) - assessment practice, with a complete four-level TypeScript solution
