@@ -4,6 +4,12 @@ A structured DSA, Computer Science, System Design, and AI interview-preparation 
 
 ## Start here
 
+- [Local SWE Interview Coach setup and usage](coach/README.md) - installed Claude Code plugin, Codex framework skills, practice commands, and personal workspace
+
+- [Stripe experienced SWE interview preparation](stripe/rounds/README.md) - multipart coding, API integration, bug squash, design, and project/leadership practice
+- [Netflix experienced SWE interview preparation](netflix/rounds/README.md) - caches, versioned state, DSA, team-specific design, and culture/project preparation
+- [Shared Stripe / Netflix preparation strategy](handbook/Stripe-Netflix-Preparation-Strategy.md) - six-week and two-week plans, mocks, and progress tracking
+
 - [Agoda Staff interview preparation](agoda/rounds/README.md) - DSA patterns, worked TypeScript solutions, platform/code review, system design, and leadership strategy
 - [Google L5 interview preparation](google/rounds/README.md) - graph-heavy practice, coding follow-ups, worked TypeScript solutions, system design, and leadership strategy
 - [Shared Agoda / Google preparation strategy](handbook/Agoda-Google-Preparation-Strategy.md) - six-week plan, compressed plan, mock rubric, and progress tracker
