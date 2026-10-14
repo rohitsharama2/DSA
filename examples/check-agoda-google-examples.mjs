@@ -10,7 +10,7 @@ const files = [
 ];
 const blocks = files.flatMap(file => [...readFileSync(new URL(file, import.meta.url), 'utf8')
   .matchAll(/```ts\n([\s\S]*?)```/g)].map(match => match[1]));
-assert.equal(blocks.length, 8, 'All eight worked solution blocks must be exercised');
+assert.equal(blocks.length, 10, 'All ten worked solution blocks must be exercised');
 const code = stripTypeScriptTypes(blocks.join('\n'));
 const tests = String.raw`
 let checks = 0;
@@ -182,7 +182,66 @@ for (let t = 0; t < 70; t++) {
   eq(sorted, [...values].sort((a,b) => a-b));
   throws(() => heap.pop());
 }
-console.log('PASS: ' + checks + ' assertions across eight worked solutions.');
+// Capacity DP versus exhaustive assignment, independent of sorted-prefix reasoning.
+function assignmentReference(robots, factories) {
+  const remaining = factories.map(site => site[1]);
+  function visit(i) {
+    if (i === robots.length) return 0;
+    let best = Infinity;
+    for (let j = 0; j < factories.length; j++) {
+      if (!remaining[j]) continue;
+      remaining[j]--;
+      best = Math.min(best, Math.abs(robots[i] - factories[j][0]) + visit(i + 1));
+      remaining[j]++;
+    }
+    return best;
+  }
+  const answer = visit(0);
+  return answer === Infinity ? null : answer;
+}
+eq(minimumAssignmentDistance([1,5,9], [[2,1],[8,2]]), 5);
+eq(minimumAssignmentDistance([4,5], [[0,1],[6,1]]), 5);
+eq(minimumAssignmentDistance([], []), 0);
+eq(minimumAssignmentDistance([0], []), null);
+eq(minimumAssignmentDistance([0,1], [[0,1],[2,0]]), null);
+eq(minimumAssignmentDistance([-1000000000,1000000000], [[0,2]]), 2000000000);
+for (let t = 0; t < 180; t++) {
+  const robots = Array.from({ length: rnd(7) }, () => rnd(15) - 7);
+  const factories = Array.from({ length: rnd(5) }, () => [rnd(15) - 7, rnd(4)]);
+  const before = JSON.stringify([robots, factories]);
+  eq(minimumAssignmentDistance(robots, factories), assignmentReference(robots, factories));
+  eq(JSON.stringify([robots, factories]), before);
+}
+
+// Weighted shortest paths versus repeated Bellman-Ford relaxations.
+function weightedReference(graph, source) {
+  const d = Array(graph.length).fill(Infinity);
+  d[source] = 0;
+  for (let pass = 1; pass < graph.length; pass++) {
+    for (let u = 0; u < graph.length; u++) for (const {to, weight} of graph[u]) {
+      d[to] = Math.min(d[to], d[u] + weight);
+    }
+  }
+  return d;
+}
+eq(weightedDistances([[{to:1,weight:9},{to:2,weight:2}],[],[{to:1,weight:1}],[]], 0),
+  [0,3,2,Infinity]);
+eq(weightedDistances([[]], 0), [0]);
+eq(weightedDistances([[{to:1,weight:0}],[{to:0,weight:0}],[]], 0), [0,0,Infinity]);
+eq(weightedDistances([[{to:1,weight:10},{to:1,weight:2}],[]], 0), [0,2]);
+eq(weightedDistances([[{to:1,weight:3000000000}],[]], 0), [0,3000000000]);
+for (let t = 0; t < 200; t++) {
+  const n = 1 + rnd(10);
+  const graph = Array.from({ length: n }, () => []);
+  for (let i = 0, m = rnd(45); i < m; i++) {
+    graph[rnd(n)].push({ to: rnd(n), weight: rnd(20) });
+  }
+  const source = rnd(n);
+  const before = JSON.stringify(graph);
+  eq(weightedDistances(graph, source), weightedReference(graph, source));
+  eq(JSON.stringify(graph), before);
+}
+console.log('PASS: ' + checks + ' assertions across ten worked solutions.');
 `;
 vm.runInNewContext(code + '\n' + tests, { assert, console }, { timeout: 30000 });
 console.log(`Executed ${blocks.length} TypeScript blocks directly from Markdown (runtime checks only).`);

@@ -35,3 +35,43 @@ Prepare a short map from your experience to the team's problems: relevant domain
 Ask about the team's current bottleneck, expected first project, design ownership, operational load, partner teams, and the balance of product delivery with infrastructure work. Explain a real example of a related problem you solved; do not imply experience you lack.
 
 **Readiness:** Two defensible project briefs; six distinct stories; clear individual decisions; evidence of collaboration; honest learning from failure. Reuse facts from the Agoda workbook where applicable, but tailor emphasis to this role's scope.
+
+## October 14 update: Googleyness rehearsal for Rohit
+
+Source for personalization: [your senior full-stack resume draft](../../coach/workspace/resume/senior-fullstack-draft.md). These are story candidates, not verified achievements beyond the draft and not invented answers. Use a story only if you can supply the missing decisions, people, timeline and evidence. Keep estimated savings/API reductions explicitly estimated; preserve POC versus production distinctions.
+
+| Story candidate | Questions it may support | Facts to prepare before rehearsal |
+| --- | --- | --- |
+| Ushur Superset / Self-Serve Insights migration | Ambiguity, ownership, stakeholder influence, build versus buy | Alternatives; your authority; rollout/rollback; who disagreed; calculation behind estimated $400K–$500K annual savings |
+| Luckd payment and reconciliation work | Reliability, difficult trade-off, end-to-end ownership | Duplicate/uncertain-payment sequence; invariant; actual safeguards; failure handling; individual versus shared work |
+| CoverSelf AI claims authoring | User impact, ambiguous requirements, balancing speed and quality | How the 85% figure was measured; sample/baseline; human review; unsafe or incorrect output handling |
+| CoverSelf caching / re-render fixes | Debugging, simplification, customer focus | Root cause; cache invalidation; stale-data risk; basis for estimated 30% API reduction |
+| Ushur dbt/FastAPI service | Cross-stack delivery, operational ownership | Metric behind 25%; failed deployment/recovery if one occurred; tests, dependency boundaries and handoff |
+| Reusable components / design tokens | Influence, enabling others, consistency | Actual adopters; resistance if any; migration plan; feedback and maintainability outcome |
+
+The resume does **not** establish a real conflict, failure, mentoring event or difficult feedback story. Supply one actual example for each missing category instead of retrofitting a success into a fabricated disagreement. Strong scope comes from your decisions and impact, not inflating team size.
+
+### Six practice questions and follow-up ladders
+
+1. “Tell me about a project where the requirements were unclear.” What did you clarify? What did you choose without your manager? What changed and why?
+2. “Tell me about disagreement with a peer or product partner.” Present their strongest case. What evidence changed the decision? How did you support the outcome?
+3. “Describe a mistake that affected users or delivery.” What was your contribution? Who did you inform? What did you change afterward and how did you verify it?
+4. “How did you help another engineer become more independent?” Give a concrete intervention, follow-up and result. Distinguish mentoring from doing their work yourself.
+5. “When did you receive feedback you initially disagreed with?” Use situation → observed behavior → impact, then show what you changed.
+6. “How did you balance a deadline against quality?” State risks, non-negotiable safeguards, staged scope, debt owner and follow-through.
+
+Practice a two-minute STAR: 20 seconds situation, 15 task, 60 actions/decisions, 25 result and learning. Then spend five minutes on challenges to your account. For failure, use Context → Action → Result → Learning. These are coaching timings, not Google scoring rules.
+
+**Story card:** date/project; stakes; personal mandate; two alternatives; decision and why; collaborator's perspective; obstacle; outcome; measurement source; what failed; what you would change. Record gaps as unknown. Avoid blaming, claiming sole credit for shared work, or turning every failure into an effortless success.
+
+### Recruiter / manager introduction to adapt
+
+“I build full-stack enterprise and product workflows across React/TypeScript, Node.js and Python. My recent work includes analytics migration at Ushur, AI-assisted claims workflows at CoverSelf, and payment/reconciliation flows for Luckd. I enjoy owning the interaction between user-facing behavior and backend correctness. For this role, I'd like to understand which product or platform problems the team needs a senior engineer to own.”
+
+Add one defensible outcome and your specific motivation for the team. Do not describe the AI analyst POC as a large-scale production ML deployment.
+
+### Team-match meeting rehearsal
+
+Prepare a two-minute introduction, a ten-minute project deep dive, and questions about the first six months, ownership boundaries, review/on-call expectations, partner teams, product-versus-platform mix and success measures. Match Superset to analytics, Luckd to transactional systems, and CoverSelf to AI-assisted workflows only when relevant. Be candid about gaps.
+
+The [India full-stack report](https://www.reddit.com/r/LeetcodeDesi/comments/1slxvll/cleared_google_l5_india_team_matching_taking_time/) documents waiting during matching and later updates its outcome; it does not predict your timeline. Ask your recruiter what remains, how matching operates for this requisition, and what information would help them present your fit. Do not infer an offer from encouraging conversations.

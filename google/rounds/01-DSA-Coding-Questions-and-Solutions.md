@@ -1,8 +1,8 @@
 # Google L5: DSA patterns and worked TypeScript
 
-[Round-wise index](README.md) · [Evidence G1–G5](Research-Sources.md) · [Study strategy](../../handbook/Agoda-Google-Preparation-Strategy.md)
+[Round-wise index](README.md) · [Evidence G1–G8](Research-Sources.md) · [Study strategy](../../handbook/Agoda-Google-Preparation-Strategy.md)
 
-**Updated October 9, 2026.** P0 means first, P1 broadens coverage, P2 stretches a mastered pattern. These are study priorities, not company-frequency rankings. The 30 linked problems are practice analogues/foundations; the original implementations below are not claimed to reproduce interview questions.
+**Updated October 14, 2026.** P0 means first, P1 broadens coverage, P2 stretches a mastered pattern. These are study priorities, not company-frequency rankings. The 30 foundational linked problems plus eight October additions are practice analogues/foundations; the original implementations below are not claimed to reproduce interview questions.
 
 ## Pattern-to-question bank
 
@@ -221,3 +221,145 @@ function optimalMergeCost(lengths: number[]): number {
 For a 45-minute mock: 5 minutes clarify/examples; 7 baseline/model/invariant; 20 implementation; 8 tests; 5 complexity/follow-up. This is a practice budget. Explain why the data structure fits before implementing it.
 
 For each problem, change one condition after the first solution: directed edges, deletions, duplicate constraints, larger numeric range, online arrivals, or returning the actual path. Identify whether the old invariant survives before changing the code. Use the [shared rubric](../../handbook/Agoda-Google-Preparation-Strategy.md) to record concrete misses.
+
+## October additions: recent themes and deliberate transfer practice
+
+The [October 13 India report](https://www.reddit.com/r/LeetcodeDesi/comments/1x56nee/google_l5_chances_with_lh_in_system_design_india/) reports union-find, robot/factory-like DP, BFS → Dijkstra and tests/code review. The [April full-stack report's author comments](https://www.reddit.com/r/LeetcodeDesi/comments/1slxvll/cleared_google_l5_india_team_matching_taking_time/) add DP, linked list + hash map, and tree categories. Neither supplies exact coding statements. Prioritize these alongside the original bank; do not memorize them as predictions.
+
+| # | Priority | Practice link | Why and what to explain |
+| --- | --- | --- | --- |
+| 31 | P0 DP | [2463 Minimum Total Distance Traveled](https://leetcode.com/problems/minimum-total-distance-traveled/) | G6 analogy; Q5 below: capacities defeat naive nearest-factory assignment |
+| 32 | P0 DSU | [1319 Number of Operations to Make Network Connected](https://leetcode.com/problems/number-of-operations-to-make-network-connected/) | Transfer from connectivity; count components and distinguish redundant cables from missing edges |
+| 33 | P1 DSU | [947 Most Stones Removed with Same Row or Column](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/) | Model shared attributes as connectivity; proof for stones minus components |
+| 34 | P1 weighted paths | [1514 Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/) | Transfer: max-product relaxation; explain assumptions for finalization |
+| 35 | P0 pointers + map | [138 Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/) | G8 category analogue; map node identity, not value; prove no original links remain |
+| 36 | P1 pointers | [143 Reorder List](https://leetcode.com/problems/reorder-list/) | Breadth: split, reverse, merge; odd/even length, avoid cycles |
+| 37 | P1 tree | [124 Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) | G8 category analogue; distinguish upward contribution from completed path; all-negative input |
+| 38 | P1 heap | [347 Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) | Transfer to dashboard thinking; grouped frequencies differ from largest individual events |
+
+Already in the bank: #7 Network Delay Time, #8–9 connectivity, #10–11 trees, #28 LRU. Repeat these with new constraints instead of counting them as new questions.
+
+## Q5. Capacity-constrained assignment on a line
+
+**Evidence:** G6 says its DP resembled robot/factory, without remembering the exact question. This is our static assignment exercise, closely related to [LC 2463](https://leetcode.com/problems/minimum-total-distance-traveled/), not a recovered interview statement.
+
+**Contract:** Given robot positions and factories `[position, capacity]` on a line, assign every robot to a factory, minimizing total absolute distance without exceeding capacities. Input arrays are not mutated. Empty robots cost 0; insufficient capacity returns `null`. Capacities are nonnegative integers. Coordinates and all finite accumulated costs fit JavaScript safe integers. The implementation assumes valid inputs.
+
+**Example:** robots `[1,5,9]`, factories `[[2,1],[8,2]]` → `5`: distances `1+3+1`. A nearest-available greedy algorithm can fail: robots `[4,5]`, factories `[[0,1],[6,1]]`; assigning robot 4 to factory 6 first costs `2+5=7`, while the optimum costs `4+1=5`.
+
+**Derive before coding:**
+
+1. Brute force assigns each robot to each available factory: up to `m^n` choices.
+2. Sort both sides. For robots `a <= b` and factories `x <= y`, `|a-x|+|b-y| <= |a-y|+|b-x|`. Uncrossing assignments never increases cost and preserves capacity use. Therefore an optimum assigns consecutive groups of sorted robots to sorted factories.
+3. Let `previous[i]` be minimum cost to assign the first `i` robots using factories already processed. Initially only `previous[0]=0` is feasible.
+4. For factory `(p,c)`, either skip it or give it the last `k` robots of this prefix: `next[i] = min(previous[i-k] + sum(abs(robot[t]-p), t=i-k..i-1))`, for `0 <= k <= min(c,i)`.
+5. Use a fresh row. Reading partially updated values from this factory's row could reuse its capacity incorrectly.
+
+```ts
+function minimumAssignmentDistance(
+  robots: number[], factories: [number, number][]
+): number | null {
+  const ordered = [...robots].sort((a, b) => a - b);
+  const sites = [...factories].sort((a, b) => a[0] - b[0]);
+  const n = ordered.length;
+  let previous = Array(n + 1).fill(Infinity) as number[];
+  previous[0] = 0;
+  for (const [position, capacity] of sites) {
+    const next = [...previous]; // k = 0: skip this factory
+    for (let i = 1; i <= n; i++) {
+      let extra = 0;
+      for (let k = 1; k <= Math.min(capacity, i); k++) {
+        extra += Math.abs(ordered[i - k] - position);
+        next[i] = Math.min(next[i], previous[i - k] + extra);
+      }
+    }
+    previous = next;
+  }
+  return previous[n] === Infinity ? null : previous[n];
+}
+```
+
+**Trace:** For `[1,5,9]`, row after factory `(2,1)` is `[0,1,Infinity,Infinity]`. After `(8,2)` it is `[0,1,4,5]`. The last cell gives 5.
+
+**Correctness:** The uncrossing argument makes contiguous groups sufficient. Each transition enumerates every allowed size of the current factory's final group and combines it with an optimal earlier prefix. Induction over factories proves every row; unreachable prefixes stay infinite.
+
+**Complexity:** With `n` robots, `m` factories and `C=min(n,max capacity)`, time `O(n log n + m log m + mnC)`, worst-case `O(mn²)` after sorting. Space `O(n+m)` including sorted copies and rolling rows. Do not call this exponential just because the inner loop tries multiple group sizes.
+
+**Tests:** Empty sides; zero-capacity sites; insufficient capacity; negative coordinates; robot at factory; equal positions under our contract; a far-away spare factory; input order and immutability; greedy counterexample.
+
+**Follow-ups:** Return assignments by storing predecessor choices in `O(mn)` space. Larger capacities are capped at `n`. For faster transitions define distance prefix `P[i]` for a factory: `next[i]=P[i]+min(previous[j]-P[j])` over `j in [max(0,i-c),i]`; a monotone deque gives `O(n)` per factory. Explain that derivation before implementing it. Arbitrary travel costs or a 2-D geometry need not satisfy uncrossing; the prefix DP may fail. For threading, factories depend on earlier rows; cells within one row can be independently computed from the immutable previous row, but synchronization and overhead may outweigh the benefit.
+
+## Q6. A route planner changes from hop count to travel cost
+
+**Evidence:** G6 reports BFS followed by Dijkstra, then testing and review. The contract and examples below are our own drill.
+
+**Base prompt:** Directed adjacency list, valid vertices, source and destination; every edge takes one step. Return minimum steps, `0` for the same vertex, `null` if unreachable. Explain BFS layers, mark seen on enqueue, use a head-index queue. Time `O(V+E)`, auxiliary space `O(V)`.
+
+**Changed requirement:** Each edge now has a nonnegative integer cost. Return minimum total cost to every vertex, `Infinity` for unreachable vertices. Costs and sums fit safe integers. Why does BFS fail? For `0→1(9), 0→2(2), 2→1(1)`, one-hop discovery of 1 costs 9 while its optimum is 3. Edge weights in `{0,1}` admit Q2's deque; general nonnegative weights admit Dijkstra. Negative edges invalidate Dijkstra's finalization proof.
+
+```ts
+function weightedDistances(
+  graph: { to: number; weight: number }[][], source: number
+): number[] {
+  const distance = Array(graph.length).fill(Infinity) as number[];
+  const heap: { vertex: number; cost: number }[] = [];
+  function push(entry: { vertex: number; cost: number }): void {
+    heap.push(entry);
+    let i = heap.length - 1;
+    while (i > 0) {
+      const p = Math.floor((i - 1) / 2);
+      if (heap[p].cost <= heap[i].cost) break;
+      [heap[p], heap[i]] = [heap[i], heap[p]];
+      i = p;
+    }
+  }
+  function pop(): { vertex: number; cost: number } {
+    const first = heap[0];
+    const last = heap.pop()!;
+    if (heap.length) {
+      heap[0] = last;
+      let i = 0;
+      while (2 * i + 1 < heap.length) {
+        let child = 2 * i + 1;
+        if (child + 1 < heap.length && heap[child + 1].cost < heap[child].cost) child++;
+        if (heap[i].cost <= heap[child].cost) break;
+        [heap[i], heap[child]] = [heap[child], heap[i]];
+        i = child;
+      }
+    }
+    return first;
+  }
+  distance[source] = 0;
+  push({ vertex: source, cost: 0 });
+  while (heap.length) {
+    const { vertex, cost } = pop();
+    if (cost !== distance[vertex]) continue;
+    for (const { to, weight } of graph[vertex]) {
+      const candidate = cost + weight;
+      if (candidate >= distance[to]) continue;
+      distance[to] = candidate;
+      push({ vertex: to, cost: candidate });
+    }
+  }
+  return distance;
+}
+```
+
+**Correctness:** At each non-stale minimum extraction, an undiscovered route cannot improve this distance: reaching it through an unsettled vertex adds only nonnegative cost. Relaxation considers all outgoing edges, and obsolete heap entries are ignored. Use strict improvements so zero-cost cycles do not endlessly enqueue ties.
+
+**Complexity:** Lazy duplicate entries can use `O(E)` heap space. Time `O(V + E log(E+2))`, auxiliary space `O(V+E)`; for simple graphs this is commonly expressed as `O((V+E) log V)`. An indexed decrease-key heap bounds heap occupancy by `V`. Do not claim an `O(V)` heap for this implementation.
+
+**Adversarial tests:** The example above yields `[0,3,2]`; add disconnected vertex 3 → `[0,3,2,Infinity]`. Test a zero-cost cycle, self-loop, parallel edges, equal alternatives, stale entries, single vertex, large safe costs, and source with no outgoing edges.
+
+**Review checklist:** Is the heap ordered by cost? Is graph direction correct? Is staleness checked? Is equality excluded from relaxation? Is reachability explicit? Are input assumptions clear? For a single target, stop only when the target is popped with its current minimum cost, not when first discovered. To return a route, record parents on strict improvement. Parallel relaxation needs coordinated minimum updates and termination logic; adding workers alone does not preserve the proof.
+
+## DSU follow-ups to pair with Q3
+
+- **Online insertions:** Union immediately; avoid sorting only when chronological order is guaranteed. With path compression and size/rank, operations take amortized `O(α(V))` after setup; Q3's sorting cost still dominates unsorted logs.
+- **Deletion:** Ordinary union-find cannot split a component. For small workloads, rebuild/traverse after a removal; deletion-only offline workloads can sometimes reverse time; general offline additions/deletions can use a segment tree over edge lifetimes with rollback DSU, typically without path compression. State the workload before choosing.
+- **Actual route:** Connectivity alone loses the path. Keep graph edges and run BFS/DFS when a route is required.
+- **Scaling:** Describe memory (`O(V)` DSU state plus logs), external sorting if logs exceed RAM, and globally consistent component merging. Sharding by vertex does not make cross-shard connectivity independent.
+
+## Explaining your approach under pressure
+
+Use Understand → Match → Plan → Implement → Review → Evaluate. Say: “The constraint that changes my approach is __. My invariant is __. The baseline costs __; this approach costs __ because __.” If stuck, build the smallest counterexample and explain what failed. On a changed requirement, restate the new contract before modifying code. End with an actual trace, edge case, and final time/space costs.

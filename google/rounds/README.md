@@ -1,43 +1,54 @@
-# Google L5: preparation by interview area
+# Google L5 India: complete interview guide
 
-[Company index](../README.md) · [Research register](Research-Sources.md) · [Shared strategy](../../handbook/Agoda-Google-Preparation-Strategy.md)
+[Company index](../README.md) · [Sources and confidence](Research-Sources.md) · [Daily plan and mocks](04-Preparation-Plan-and-Mock-Interviews.md)
 
-**Updated October 9, 2026.** Focus on recognizing a model from an unfamiliar story, explaining correctness, and adapting to follow-ups.
+**Updated October 14, 2026.** Target: general SWE / full-stack L5 in India. Keep TypeScript/JavaScript as the preparation language; confirm permitted language and libraries with your recruiter. A strong preparation outcome is independently solving unfamiliar problems, defending design decisions, and demonstrating real ownership. It cannot guarantee selection or leveling.
 
-| Area | Material | Finish before the round |
+## The full process to prepare for
+
+The [October India report supplied by you](https://www.reddit.com/r/LeetcodeDesi/comments/1x56nee/google_l5_chances_with_lh_in_system_design_india/) describes screening coding + Googleyness, followed by two onsite coding rounds and system design. The [April India full-stack account and author comments](https://www.reddit.com/r/LeetcodeDesi/comments/1slxvll/cleared_google_l5_india_team_matching_taking_time/) also describe three coding interviews, one Googleyness, and one design in total. Use this as a working template, not a guaranteed sequence. Hiring review and matching can overlap or vary; additional interviews may be requested. [G5–G8](Research-Sources.md)
+
+| Stage | What to prepare | Concrete completion target |
 | --- | --- | --- |
-| Technical screen, if scheduled | [DSA bank and four worked solutions](01-DSA-Coding-Questions-and-Solutions.md) | One unseen problem with tests and complexity in 45 minutes |
-| Coding interviews | [Graph, tree, interval, heap, and DP practice](01-DSA-Coding-Questions-and-Solutions.md) | Multiple independent mocks including changed requirements |
-| System design | [Design workbook](02-System-Design-and-Followups.md) | Two designs with estimates, consistency, failures, and evolution |
-| Leadership / collaboration | [Leadership and project workbook](03-Leadership-and-Team-Matching.md) | Six evidence stories and a clear ownership narrative |
-| Team matching, if applicable | [Questions and project fit](03-Leadership-and-Team-Matching.md) | Connect real experience to the team's technical problems |
+| Application / recruiter conversation | Role scope, resume, motivation, location, availability, relevant ownership | 90-second introduction; two projects; questions about the exact loop |
+| Assessment, **only if invited** | Read the actual invitation; do not infer an OA or assessment type from new-grad reports | Know duration, format, permitted tools and deadline; no universal L5 OA is established here |
+| R1: coding qualification / screen | Modeling, constraints, working code, correctness and follow-ups | One unfamiliar 45-minute problem using the [DSA guide](01-DSA-Coding-Questions-and-Solutions.md) |
+| R2: Googleyness / leadership | Ambiguity, collaboration, disagreement, feedback, responsibility, learning | Six factual stories and live follow-ups using the [leadership workbook](03-Leadership-and-Team-Matching.md) |
+| R3: onsite coding A | Depth in DP, graphs, trees or other patterns; articulate why the solution works | Complete base case plus a changed requirement; test before time ends |
+| R4: system design | Requirements, estimates, APIs/data, architecture, two deep dives, failures | A complete 45–60-minute design using the [design workbook](02-System-Design-and-Followups.md) |
+| R5: onsite coding B | Adapt the data model or algorithm; tests and review | Explain exactly why a new constraint invalidates the original approach |
+| Additional interview, if requested | Address the area recruiter identifies while retaining breadth | One targeted mock with evidence of the repaired gap; no assumptions about outcome |
+| Hiring / leveling review | Keep resume facts and project scope precise; ask recruiter for status | Distinguish confirmed feedback from your own impression; no candidate-facing exam to memorize |
+| Team matching / manager discussion | Relevant project depth, motivation, team needs, ownership and collaboration | Two project briefs, fit pitch, and questions about actual work |
+| Offer discussion / closing | Written role, location, level, compensation components and start date | Confirm terms and remaining steps with recruiter; matching progress is not a written offer |
 
-A 2025 L5 report describes three coding rounds, design, and leadership; another candidate reports extra coding later. Treat these as examples, not a fixed five-round loop or a published pass formula. [G4–G5](Research-Sources.md)
+The R1–R5 numbering follows G6 for practice; design and behavioral need not occupy those positions in your invitation. Do not assume a separate code-review round from the code-review **follow-up** reported in G6. Domain-specific frontend, Android, ML or AI design should be added if the role requires it; AI work on your resume does not automatically make this an ML interview.
 
-## Research-based priorities
+## What changed in this update
 
-Topological ordering appears in multiple relevant accounts; other themes include weighted graph search, trees, and connectivity. This small, self-selected sample supports **extra graph practice**, not the claim that most Google questions are graphs. The 2026 account's publication date is later than its described interview period. [G1–G3](Research-Sources.md)
-
-Recommended full-loop time split: **60% coding, 25% design, 15% leadership**. These are our study allocations. Keep design in the plan from week one; do not postpone it until every coding question is solved.
-
-## First seven study sessions
-
-| Session | Coding | L5 preparation |
+| Recent reported theme | Preparation response | Evidence strength |
 | --- | --- | --- |
-| 1 | Course Schedule II, then alien ordering | Capture two project summaries |
-| 2 | Multi-source BFS; 0–1 weighted paths | Distributed cache requirements and estimates |
-| 3 | Connectivity and union-find | Failure handling and consistency |
-| 4 | Tree traversal and LCA | Ownership and disagreement stories |
-| 5 | Intervals and binary search | Feed pagination and ranking boundaries |
-| 6 | DP plus heap / optimal merge practice | Design with a changed requirement |
-| 7 | Two unseen 45-minute coding mocks | Leadership rehearsal and gap review |
+| Union-find with follow-ups | Q3 connectivity; explain insertion versus deletion and scaling | G6 theme only; exact problem unknown |
+| DP “similar to robot factory” | Q5 capacity assignment; sorting proof, recurrence, time/space, reconstruction | G6 analogy; LC 2463 is our practice mapping |
+| BFS followed by Dijkstra | Q6 unweighted → weighted paths; stale entries, adversarial tests, review | G6 algorithms reported; our graph contract is original |
+| Dashboard of N worst queries | Clarify metric/window first; design aggregation and top-K correctly | G6 vague design theme; our detailed contract is original |
+| DP, linked list + hash map, tree | Keep LRU, pointer manipulation, traversal, LCA, serialization | G8 broad categories only; specific LC titles are our choices |
+| Ecommerce/payment-related design | Payment/reconciliation drill tied to Luckd | G8 broad comments; no exact reconstruction claimed |
 
-For TypeScript, practice a head-index queue, a heap, explicit graph state, and safe numeric bounds. Confirm accepted languages and runtime/library support in the invitation.
+## Recruiter checklist
 
-Run all new examples from the repository root with Node.js 22.13+:
+Confirm the target level and generic SWE versus frontend/full-stack/domain scope; round count and duration; order of coding/leadership/design; remote versus office location; accepted language/runtime and built-in collections; editor, execution and drawing tools; any assessment; and permitted preparation aids during the actual interview. Ask for role-specific preparation materials and accommodations if needed. Follow the invitation; official [virtual-interview guidance](https://services.google.com/fh/files/misc/general_virtual_interviews_candidate_resource.pdf) covers setup, not a universal hiring loop.
+
+## How to use this repository
+
+1. Do the Day 1 diagnostic in the [28-day plan](04-Preparation-Plan-and-Mock-Interviews.md) before reading solution code.
+2. Work through the 30 foundations plus eight October additions in the [DSA guide](01-DSA-Coding-Questions-and-Solutions.md). Spend more time explaining and varying a problem than counting solved questions.
+3. Start design and leadership in week one. Default allocation: 60% coding, 25% design, 15% leadership; adjust after your diagnostic. This is our study allocation.
+4. Use resume facts to defend decisions, not to invent scale or imply causal certainty. The [story workbook](03-Leadership-and-Team-Matching.md) maps your existing projects to prompts.
+5. Run executable solution checks from the repository root with Node.js 22.13+:
 
 ```sh
 node examples/check-agoda-google-examples.mjs
 ```
 
-These checks execute the Markdown solutions; they do not perform static TypeScript checking.
+The checks execute TypeScript blocks extracted from Markdown, including independent reference comparisons. They do not perform static TypeScript checking. Passing them validates the examples, not interview readiness.
