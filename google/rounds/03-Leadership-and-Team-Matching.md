@@ -75,3 +75,14 @@ Add one defensible outcome and your specific motivation for the team. Do not des
 Prepare a two-minute introduction, a ten-minute project deep dive, and questions about the first six months, ownership boundaries, review/on-call expectations, partner teams, product-versus-platform mix and success measures. Match Superset to analytics, Luckd to transactional systems, and CoverSelf to AI-assisted workflows only when relevant. Be candid about gaps.
 
 The [India full-stack report](https://www.reddit.com/r/LeetcodeDesi/comments/1slxvll/cleared_google_l5_india_team_matching_taking_time/) documents waiting during matching and later updates its outcome; it does not predict your timeline. Ask your recruiter what remains, how matching operates for this requisition, and what information would help them present your fit. Do not infer an offer from encouraging conversations.
+
+## October 16: prompts from the supplied L5 report
+
+The [G9 anonymized repost](https://www.reddit.com/r/OfferEngineering/comments/1v6bivx/passed_google_l5_none_of_the_questions_were/) adds these behavioral themes. The wording below is paraphrased for practice; the source does not provide a transcript or verified scoring criteria.
+
+1. Describe a major challenge you owned and how you handled it.
+2. Describe a difficult working relationship and how you navigated it.
+3. How did you manage several responsibilities competing for your attention?
+4. Looking back, what would you do differently?
+
+Use the existing story workbook to answer with real events; treat these as additional prompts against your existing stories, not four new stories to invent.

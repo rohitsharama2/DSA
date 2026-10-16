@@ -2,7 +2,7 @@
 
 [Company index](../README.md) · [Sources and confidence](Research-Sources.md) · [Daily plan and mocks](04-Preparation-Plan-and-Mock-Interviews.md)
 
-**Updated October 14, 2026.** Target: general SWE / full-stack L5 in India. Keep TypeScript/JavaScript as the preparation language; confirm permitted language and libraries with your recruiter. A strong preparation outcome is independently solving unfamiliar problems, defending design decisions, and demonstrating real ownership. It cannot guarantee selection or leveling.
+**Updated October 16, 2026.** Target: general SWE / full-stack L5 in India. Keep TypeScript/JavaScript as the preparation language; confirm permitted language and libraries with your recruiter. A strong preparation outcome is independently solving unfamiliar problems, defending design decisions, and demonstrating real ownership. It cannot guarantee selection or leveling.
 
 ## The full process to prepare for
 
@@ -35,6 +35,8 @@ The R1–R5 numbering follows G6 for practice; design and behavioral need not oc
 | DP, linked list + hash map, tree | Keep LRU, pointer manipulation, traversal, LCA, serialization | G8 broad categories only; specific LC titles are our choices |
 | Ecommerce/payment-related design | Payment/reconciliation drill tied to Luckd | G8 broad comments; no exact reconstruction claimed |
 
+October 16 adds Q7–Q9 (category-cooldown dispatch, grid follow-up ladder, multiplayer board) from the [user-shared L5 repost](https://www.reddit.com/r/OfferEngineering/comments/1v6bivx/passed_google_l5_none_of_the_questions_were/), plus Two Sum and linked-list reversal warm-ups from [Mockd demos](https://mockd.fyi/?q=google). Design sections 6–7 add promotional offers and an optional SRE log-system drill. G9 is an unverified secondary narrative; M1–M2 are demos without L5 claims. See the source register for provenance.
+
 ## Recruiter checklist
 
 Confirm the target level and generic SWE versus frontend/full-stack/domain scope; round count and duration; order of coding/leadership/design; remote versus office location; accepted language/runtime and built-in collections; editor, execution and drawing tools; any assessment; and permitted preparation aids during the actual interview. Ask for role-specific preparation materials and accommodations if needed. Follow the invitation; official [virtual-interview guidance](https://services.google.com/fh/files/misc/general_virtual_interviews_candidate_resource.pdf) covers setup, not a universal hiring loop.
@@ -42,7 +44,7 @@ Confirm the target level and generic SWE versus frontend/full-stack/domain scope
 ## How to use this repository
 
 1. Do the Day 1 diagnostic in the [28-day plan](04-Preparation-Plan-and-Mock-Interviews.md) before reading solution code.
-2. Work through the 30 foundations plus eight October additions in the [DSA guide](01-DSA-Coding-Questions-and-Solutions.md). Spend more time explaining and varying a problem than counting solved questions.
+2. Work through the 30 foundations plus thirteen October additions in the [DSA guide](01-DSA-Coding-Questions-and-Solutions.md). Spend more time explaining and varying a problem than counting solved questions.
 3. Start design and leadership in week one. Default allocation: 60% coding, 25% design, 15% leadership; adjust after your diagnostic. This is our study allocation.
 4. Use resume facts to defend decisions, not to invent scale or imply causal certainty. The [story workbook](03-Leadership-and-Team-Matching.md) maps your existing projects to prompts.
 5. Run executable solution checks from the repository root with Node.js 22.13+:

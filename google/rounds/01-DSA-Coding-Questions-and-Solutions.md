@@ -1,8 +1,8 @@
 # Google L5: DSA patterns and worked TypeScript
 
-[Round-wise index](README.md) · [Evidence G1–G8](Research-Sources.md) · [Study strategy](../../handbook/Agoda-Google-Preparation-Strategy.md)
+[Round-wise index](README.md) · [Evidence G1–G9 and M1–M2](Research-Sources.md) · [Study strategy](../../handbook/Agoda-Google-Preparation-Strategy.md)
 
-**Updated October 14, 2026.** P0 means first, P1 broadens coverage, P2 stretches a mastered pattern. These are study priorities, not company-frequency rankings. The 30 foundational linked problems plus eight October additions are practice analogues/foundations; the original implementations below are not claimed to reproduce interview questions.
+**Updated October 16, 2026.** P0 means first, P1 broadens coverage, P2 stretches a mastered pattern. These are study priorities, not company-frequency rankings. The 30 foundational linked problems plus thirteen October additions are practice analogues/foundations; the original implementations below are not claimed to reproduce interview questions.
 
 ## Pattern-to-question bank
 
@@ -352,6 +352,282 @@ function weightedDistances(
 **Adversarial tests:** The example above yields `[0,3,2]`; add disconnected vertex 3 → `[0,3,2,Infinity]`. Test a zero-cost cycle, self-loop, parallel edges, equal alternatives, stale entries, single vertex, large safe costs, and source with no outgoing edges.
 
 **Review checklist:** Is the heap ordered by cost? Is graph direction correct? Is staleness checked? Is equality excluded from relaxation? Is reachability explicit? Are input assumptions clear? For a single target, stop only when the target is popped with its current minimum cost, not when first discovered. To return a route, record parents on strict improvement. Parallel relaxation needs coordinated minimum updates and termination logic; adding workers alone does not preserve the proof.
+
+## October 16 additions: changing requirements and implementation
+
+[Reddit L5 report (G9)](https://www.reddit.com/r/OfferEngineering/comments/1v6bivx/passed_google_l5_none_of_the_questions_were/) supplies dispatcher, grid, and board-game themes. It is an anonymized repost, with no location or complete specifications. [Mockd Google cases (M1)](https://mockd.fyi/?q=google) supply two fundamentals; the accessible SWE case is a **demo**, with no L5 claim. The contracts, examples, code and follow-ups below are original practice material.
+
+| # | Priority / drill | Worked solution | Gap addressed |
+| --- | --- | --- | --- |
+| 39 | P0 priority dispatch with category cooldown | Q7 | Priority among eligible categories; release timing and idle slots |
+| 40 | P0 top-to-bottom grid paths | Q8 | Reachability → every simple path → cheapest path; extends Q6 |
+| 41 | P0 multiplayer N×N board | Q9 | Stateful API, validation, constant-time win checks |
+| 42 | P1 warm-up: Two Sum | Q10 | Mockd SWE demo; complement lookup and duplicate values |
+| 43 | P1 warm-up: reverse a linked list | Q11 | Mockd SWE demo; iterative and recursive pointer invariants |
+
+For a 45-minute L5 mock, use Q7, Q8 or Q9 as the main exercise; Q10–Q11 are warm-ups. Practice the changed requirement only after stating and testing the base contract. See the design workbook's sections 6–7 for promotional offers and the optional SRE log-system drill. Mockd's PM demo is outside this SWE guide.
+
+## Q7. Priority dispatcher with category cooldown
+
+**Evidence:** G9 reports priority dispatch followed by a category cooldown. **Clarify:** Higher or lower number first? Can tasks arrive later? Does cooldown count successful dispatches or elapsed slots? May we idle? What breaks ties?
+
+**Our contract:** All tasks are available initially, IDs are unique, priorities are finite numbers, and larger priority wins. Equal priorities use input order. After dispatch at slot `t`, that category is blocked for slots `t+1..t+k`; idle slots count. Return `{slot,id}` entries without materializing idle slots. `k` is a nonnegative safe integer, and all slot arithmetic fits safe integers. This simulates the required priority policy; it does not optimize makespan.
+
+**Example:** `[(a,A,9),(b,A,8),(c,B,7)]`, `k=2` → `[(0,a),(1,c),(3,b)]`. At slot 1, `b` is blocked despite its higher priority.
+
+**Derivation:** A scan over pending tasks at each dispatch is an `O(n²)` baseline. Sort each category's tasks; only its best remaining task can win globally. Keep one entry per eligible category in a priority heap. After dispatch, move that category to a release queue. A fixed cooldown makes release times monotonic, so a head-index FIFO suffices. Jump to the next release when nothing is ready.
+
+```ts
+class PracticeHeap<T> {
+  private data: T[] = [];
+  private before: (a: T, b: T) => boolean;
+  constructor(before: (a: T, b: T) => boolean) { this.before = before; }
+  get size(): number { return this.data.length; }
+  push(value: T): void {
+    this.data.push(value);
+    let i = this.data.length - 1;
+    while (i > 0) {
+      const p = Math.floor((i - 1) / 2);
+      if (!this.before(this.data[i], this.data[p])) break;
+      [this.data[i], this.data[p]] = [this.data[p], this.data[i]];
+      i = p;
+    }
+  }
+  pop(): T {
+    if (!this.size) throw new Error('Empty heap');
+    const first = this.data[0], last = this.data.pop()!;
+    if (this.size) {
+      this.data[0] = last;
+      let i = 0;
+      while (2 * i + 1 < this.size) {
+        let child = 2 * i + 1;
+        if (child + 1 < this.size && this.before(this.data[child + 1], this.data[child])) child++;
+        if (!this.before(this.data[child], this.data[i])) break;
+        [this.data[i], this.data[child]] = [this.data[child], this.data[i]];
+        i = child;
+      }
+    }
+    return first;
+  }
+}
+
+type DispatchTask = { id: string; category: string; priority: number };
+function dispatchTasks(tasks: DispatchTask[], cooldown: number): { slot: number; id: string }[] {
+  if (!Number.isSafeInteger(cooldown) || cooldown < 0) throw new Error('Invalid cooldown');
+  type Entry = DispatchTask & { order: number };
+  const groups = new Map<string, Entry[]>(), positions = new Map<string, number>();
+  const before = (a: Entry, b: Entry): boolean =>
+    a.priority > b.priority || (a.priority === b.priority && a.order < b.order);
+  tasks.forEach((task, order) => {
+    if (!groups.has(task.category)) groups.set(task.category, []);
+    groups.get(task.category)!.push({ ...task, order });
+  });
+  const ready = new PracticeHeap<Entry>(before);
+  for (const [category, group] of groups) {
+    group.sort((a, b) => b.priority - a.priority || a.order - b.order);
+    positions.set(category, 0);
+    ready.push(group[0]);
+  }
+  const blocked: { release: number; entry: Entry }[] = [];
+  const output: { slot: number; id: string }[] = [];
+  let head = 0, slot = 0;
+  while (ready.size || head < blocked.length) {
+    if (!ready.size) slot = Math.max(slot, blocked[head].release);
+    while (head < blocked.length && blocked[head].release <= slot) ready.push(blocked[head++].entry);
+    const task = ready.pop();
+    output.push({ slot, id: task.id });
+    const next = positions.get(task.category)! + 1;
+    positions.set(task.category, next);
+    const group = groups.get(task.category)!;
+    if (next < group.length) blocked.push({ release: slot + cooldown + 1, entry: group[next] });
+    slot++;
+  }
+  return output;
+}
+```
+
+**Correctness:** Exactly one best pending task represents each ready category; every other pending category is blocked. Releasing all due entries before selection restores that invariant. The heap root is therefore the highest-priority eligible task. Dispatching removes it and blocks only its category. Jumping an idle interval cannot skip an eligible task.
+
+**Complexity:** `O(n log(n+1))` time including sorting, `O(n)` auxiliary space plus `O(n)` output. This head-index queue retains consumed entries; do not claim `O(categories)` storage for the implementation. Large cooldowns do not add iteration cost.
+
+**Tests / L5 follow-ups:** Empty input, zero cooldown, one category, ties, negative priorities, and cooldown larger than task count. For per-category cooldowns replace the FIFO with a release-time heap. For online arrivals use category heaps and carefully invalidate outdated ready entries. If only successful operations advance cooldown, all categories can become blocked forever; specify deadlock behavior. Discuss starvation under an unbounded stream of high-priority tasks.
+
+## Q8. Top-to-bottom grid: existence, all paths, cheapest route
+
+**Evidence:** G9 supplies this follow-up ladder; Q6 already covers general weighted shortest paths. **Clarify:** Four directions or downward only? Obstacles? May a cell repeat? Cost of entering a cell or traversing an edge? Is the starting cell charged?
+
+**Our contract:** A rectangular matrix has `null` obstacles and nonnegative integer cell costs. Start at any open top-row cell; finish on the first bottom-row cell reached. Move up/down/left/right. Include the starting cell's cost; sums fit safe integers. Empty grids have no route. Enumerate **simple paths** (no repeated cells); unrestricted walks can be infinite. Use flattened cell IDs `r * columns + c` in outputs. Any minimum-cost route is acceptable.
+
+**Example:** `[[1,null],[2,3]]` has path `[0,2]`, cost 3. `[[9,1],[1,1]]` has a cheapest route `[1,3]`, cost 2. In a one-row grid every open cell is a complete path by itself.
+
+```ts
+function gridModel(grid: (number | null)[][]): {
+  graph: { to: number; weight: number }[][]; starts: number[]; bottom: Set<number>;
+} {
+  const rows = grid.length, cols = grid[0]?.length ?? 0;
+  const graph: { to: number; weight: number }[][] = Array.from({ length: rows * cols }, () => []);
+  const starts: number[] = [], bottom = new Set<number>();
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    if (grid[r][c] === null) continue;
+    const id = r * cols + c;
+    if (r === 0) starts.push(id);
+    if (r === rows - 1) bottom.add(id);
+    for (const [dr, dc] of [[1,0],[-1,0],[0,1],[0,-1]]) {
+      const nr = r + dr, nc = c + dc;
+      if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && grid[nr][nc] !== null)
+        graph[id].push({ to: nr * cols + nc, weight: grid[nr][nc]! });
+    }
+  }
+  return { graph, starts, bottom };
+}
+function hasGridRoute(grid: (number | null)[][]): boolean {
+  const { graph, starts, bottom } = gridModel(grid);
+  const queue = [...starts], seen = new Set(starts);
+  for (let head = 0; head < queue.length; head++) {
+    const id = queue[head];
+    if (bottom.has(id)) return true;
+    for (const { to } of graph[id]) if (!seen.has(to)) { seen.add(to); queue.push(to); }
+  }
+  return false;
+}
+function allGridRoutes(grid: (number | null)[][]): number[][] {
+  const { graph, starts, bottom } = gridModel(grid);
+  const output: number[][] = [], path: number[] = [], onPath = new Set<number>();
+  function visit(id: number): void {
+    onPath.add(id); path.push(id);
+    if (bottom.has(id)) output.push([...path]);
+    else for (const { to } of graph[id]) if (!onPath.has(to)) visit(to);
+    path.pop(); onPath.delete(id);
+  }
+  for (const start of starts) visit(start);
+  return output;
+}
+function cheapestGridRoute(grid: (number | null)[][]): { cost: number; path: number[] } | null {
+  const { graph, starts, bottom } = gridModel(grid);
+  if (!starts.length || !bottom.size) return null;
+  // A virtual source charges each starting cell once. Reuse Q6's Dijkstra.
+  const source = graph.length;
+  graph.push(starts.map(to => ({ to, weight: grid[0][to]! })));
+  const distance = weightedDistances(graph, source);
+  let target = -1;
+  for (const id of bottom) if (distance[id] < (target < 0 ? Infinity : distance[target])) target = id;
+  if (target < 0) return null;
+  // Recover a path using only tight edges. BFS visitation prevents zero-cost cycles.
+  const queue = [source], parent = new Map<number, number>([[source, -1]]);
+  for (let head = 0; head < queue.length && !parent.has(target); head++) {
+    const id = queue[head];
+    for (const { to, weight } of graph[id]) {
+      if (!parent.has(to) && distance[id] + weight === distance[to]) {
+        parent.set(to, id); queue.push(to);
+      }
+    }
+  }
+  const path: number[] = [];
+  for (let id = target; id !== source; id = parent.get(id)!) path.push(id);
+  path.reverse();
+  // Stop at the first bottom cell if an equally cheap zero-cost suffix exists.
+  const firstBottom = path.findIndex(id => bottom.has(id));
+  return { cost: distance[target], path: path.slice(0, firstBottom + 1) };
+}
+```
+
+**Correctness:** Multi-source BFS visits exactly the reachable cells. Enumeration uses path-local membership and undoes it after every branch, so it visits every legal simple path without suppressing shared cells across different paths. Dijkstra on the virtual-source graph minimizes the sum of cell costs. Tight edges satisfy `distance[u]+cost(v)=distance[v]`; a recovered tight path telescopes to the optimum. If it touches the bottom earlier, that prefix has the same optimum cost because the selected bottom distance is globally minimal and costs are nonnegative.
+
+**Complexity:** With `V=rows×columns`, the grid has `O(V)` edges. Existence: `O(V)` time/space. Cheapest route: `O(V log(V+1))` time, `O(V)` space. Enumeration: `O(V+S+L)` time, where `S` counts explored simple-path prefixes (including dead ends), and `L` is total returned path length; `O(V)` auxiliary space plus `O(L)` output. `S` can be exponential even with few successful paths. Recursion depth is `O(V)`; use an explicit stack for large grids.
+
+**Tests / L5 follow-ups:** Empty/all-blocked grids, one row, disconnected bottom, zero-cost cycles, two routes sharing a cell, and a longer route cheaper than a shorter one. Stream enumeration with a generator to avoid storing all output; impose a path/result limit for practical use. Down/right-only movement creates a DAG and permits DP; negative costs need a different shortest-path contract. Do not use one global visited set when enumerating paths.
+
+## Q9. Multiplayer N×N board with constant-time win detection
+
+**Evidence:** G9 reports an N×N multiplayer board and avoiding a full scan after each move; exact win rules are unspecified. **Our contract:** At least two distinct named players alternate cyclically. A player wins by filling one entire row, column, or either full-length diagonal on an `N×N` board. `N>=1`; reject out-of-turn, occupied, out-of-bounds and post-game moves without changing state. Return winner, draw or next player.
+
+**Derivation:** Scanning the whole board costs `O(N²)` per move; checking only the changed lines costs `O(N)`. Instead count occupied cells per player per line. A legal move touches at most four lines. Signed two-player sums do not generalize to arbitrary players; use player-specific counts.
+
+```ts
+class MultiplayerBoard {
+  private players: string[];
+  private occupied = new Set<string>();
+  private counts = new Map<string, Map<string, number>>();
+  private turn = 0;
+  private over = false;
+  private n: number;
+  constructor(n: number, players: string[]) {
+    this.n = n;
+    if (!Number.isSafeInteger(n) || n < 1 || players.length < 2 || new Set(players).size !== players.length)
+      throw new Error('Invalid board or players');
+    this.players = [...players];
+    for (const player of players) this.counts.set(player, new Map());
+  }
+  move(player: string, row: number, col: number):
+    { winner: string | null; draw: boolean; next: string | null } {
+    const cell = `${row},${col}`;
+    if (this.over || player !== this.players[this.turn] || !Number.isInteger(row) || !Number.isInteger(col)
+        || row < 0 || row >= this.n || col < 0 || col >= this.n || this.occupied.has(cell))
+      throw new Error('Illegal move');
+    this.occupied.add(cell);
+    const lines = [`r${row}`, `c${col}`];
+    if (row === col) lines.push('diagonal');
+    if (row + col === this.n - 1) lines.push('anti-diagonal');
+    const counts = this.counts.get(player)!;
+    let won = false;
+    for (const line of lines) {
+      const count = (counts.get(line) ?? 0) + 1;
+      counts.set(line, count);
+      if (count === this.n) won = true;
+    }
+    const draw = !won && this.occupied.size === this.n * this.n;
+    this.over = won || draw;
+    if (!this.over) this.turn = (this.turn + 1) % this.players.length;
+    return { winner: won ? player : null, draw, next: this.over ? null : this.players[this.turn] };
+  }
+}
+```
+
+**Correctness:** Each counter equals that player's legal occupied cells in one line. Unique occupancy prevents double counting. Only lines through the new cell can become complete, and their counts equal `N` exactly when that player fills the line. Validate before mutation, then stop the game on victory or draw.
+
+**Complexity:** Expected `O(1)` per move using maps/sets (bounded-size coordinate keys); `O(P+m)` space after `m` moves for `P` players, at most `O(P+N²)`. Sparse counters avoid allocating `P×N` arrays. **Tests / follow-ups:** `N=1`, three players, every winning direction, draw, duplicate and invalid moves, caller mutation of the player array. For `K<N` contiguous wins, counts alone are insufficient: scan outward from the move in four directions in `O(K)` or maintain directional segments. Undo needs move history and terminal-state restoration; concurrent moves need authoritative sequencing.
+
+## Q10–Q11. Mockd SWE demo warm-ups: Two Sum and linked-list reversal
+
+**Evidence:** [M1 SWE demo](https://mockd.fyi/case/seed_1), no seniority given. These are fundamentals for fluency, not additional verified L5 reports.
+
+**Q10 contract:** Given safe integers and a safe integer target (all differences also safe), return any two distinct indices summing to target, or `null`. Input need not be sorted. Baseline checks every pair in `O(n²)`; retain earlier values in a map for expected `O(n)` time and `O(n)` space. Look up before inserting so one element cannot match itself. `[3,3],6 → [0,1]`.
+
+**Q11 contract:** Reverse an acyclic singly linked list in place and return its new head; empty returns `null`. Implement both forms and account for the recursive stack. `1→2→3 → 3→2→1`.
+
+```ts
+function twoSumIndices(nums: number[], target: number): [number, number] | null {
+  const seen = new Map<number, number>();
+  for (let i = 0; i < nums.length; i++) {
+    const prior = seen.get(target - nums[i]);
+    if (prior !== undefined) return [prior, i];
+    seen.set(nums[i], i);
+  }
+  return null;
+}
+type PracticeListNode = { value: number; next: PracticeListNode | null };
+function reverseListIterative(head: PracticeListNode | null): PracticeListNode | null {
+  let previous: PracticeListNode | null = null;
+  while (head) {
+    const next = head.next;
+    head.next = previous;
+    previous = head;
+    head = next;
+  }
+  return previous;
+}
+function reverseListRecursive(head: PracticeListNode | null): PracticeListNode | null {
+  if (!head || !head.next) return head;
+  const result = reverseListRecursive(head.next);
+  head.next.next = head;
+  head.next = null;
+  return result;
+}
+```
+
+**Correctness:** Two Sum's map contains only earlier indices; a hit is a distinct valid pair, and the later endpoint of any solution will find its complement. Iterative reversal maintains a reversed processed prefix and an untouched remaining suffix, saving the next pointer before rewiring. Recursive reversal reverses the suffix, attaches the old head to its tail, and clears the old forward edge to prevent a cycle.
+
+**Complexity / tests:** Both reversals take `O(n)` time; iterative auxiliary space is `O(1)`, recursive is `O(n)` and can overflow the runtime stack. Test null, singleton, repeated values, and node identity, not just values. For Two Sum test empty, no pair, negatives, repeated values and an answer using index 0. Follow-ups: sorted input permits two pointers; returning all pairs can require quadratic output. A cyclic list requires a different contract or cycle detection before reversal.
 
 ## DSU follow-ups to pair with Q3
 

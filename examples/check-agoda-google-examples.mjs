@@ -10,7 +10,7 @@ const files = [
 ];
 const blocks = files.flatMap(file => [...readFileSync(new URL(file, import.meta.url), 'utf8')
   .matchAll(/```ts\n([\s\S]*?)```/g)].map(match => match[1]));
-assert.equal(blocks.length, 10, 'All ten worked solution blocks must be exercised');
+assert.equal(blocks.length, 14, 'All fourteen worked solution blocks must be exercised');
 const code = stripTypeScriptTypes(blocks.join('\n'));
 const tests = String.raw`
 let checks = 0;
@@ -241,7 +241,113 @@ for (let t = 0; t < 200; t++) {
   eq(weightedDistances(graph, source), weightedReference(graph, source));
   eq(JSON.stringify(graph), before);
 }
-console.log('PASS: ' + checks + ' assertions across ten worked solutions.');
+// Dispatcher: compare against a scan-based scheduler, including idle jumps.
+function dispatchReference(tasks, k) {
+  const pending = tasks.map((x, order) => ({ ...x, order }));
+  const release = new Map(), result = [];
+  let slot = 0;
+  while (pending.length) {
+    let eligible = pending.filter(x => (release.get(x.category) ?? 0) <= slot);
+    if (!eligible.length) {
+      slot = Math.min(...pending.map(x => release.get(x.category)));
+      continue;
+    }
+    eligible.sort((a,b) => b.priority - a.priority || a.order - b.order);
+    const chosen = eligible[0];
+    result.push({ slot, id: chosen.id });
+    pending.splice(pending.indexOf(chosen), 1);
+    release.set(chosen.category, slot + k + 1);
+    slot++;
+  }
+  return result;
+}
+eq(dispatchTasks([], 3), []);
+throws(() => dispatchTasks([], -1));
+for (let t = 0; t < 180; t++) {
+  const tasks = Array.from({ length: rnd(20) }, (_, i) => ({ id: String(i), category: String(rnd(4)), priority: rnd(15)-7 }));
+  const before = JSON.stringify(tasks), k = rnd(6);
+  eq(dispatchTasks(tasks, k), dispatchReference(tasks, k));
+  eq(JSON.stringify(tasks), before);
+}
+eq(dispatchTasks([{id:'a',category:'A',priority:9},{id:'b',category:'A',priority:8},{id:'c',category:'B',priority:7}],2),
+  [{slot:0,id:'a'},{slot:1,id:'c'},{slot:3,id:'b'}]);
+// Grid oracle explores coordinates directly, independently of gridModel.
+function gridReference(grid) {
+  const rows = grid.length, cols = grid[0]?.length ?? 0, paths = [];
+  function walk(r,c,path) {
+    if (r < 0 || c < 0 || r >= rows || c >= cols || grid[r][c] === null) return;
+    const id = r*cols+c;
+    if (path.includes(id)) return;
+    const next = [...path,id];
+    if (r === rows-1) { paths.push(next); return; }
+    walk(r+1,c,next); walk(r-1,c,next); walk(r,c+1,next); walk(r,c-1,next);
+  }
+  for (let c=0;c<cols;c++) walk(0,c,[]);
+  return paths;
+}
+for (const grid of [[], [[]], [[null]], [[0]], [[1,null],[2,3]], [[0,0],[0,0]],
+  ...Array.from({length:90}, () => Array.from({length:1+rnd(3)}, () => Array.from({length:3}, () => rnd(4) === 0 ? null : rnd(6))))]) {
+  const before = JSON.stringify(grid), cols = grid[0]?.length ?? 0;
+  const paths = gridReference(grid);
+  eq(allGridRoutes(grid).map(x=>x.join(',')).sort(), paths.map(x=>x.join(',')).sort());
+  eq(hasGridRoute(grid), paths.length > 0);
+  const result = cheapestGridRoute(grid);
+  if (!paths.length) eq(result,null);
+  else {
+    const cost = p => p.reduce((sum,id) => sum + grid[Math.floor(id/cols)][id%cols],0);
+    eq(result.cost, Math.min(...paths.map(cost)));
+    eq(cost(result.path), result.cost);
+    ok(paths.some(p => p.join(',') === result.path.join(',')));
+  }
+  eq(JSON.stringify(grid),before);
+}
+// Board oracle scans all winning lines after each randomized legal move.
+for (let t=0;t<100;t++) {
+  const n=1+rnd(4), players=['A','B','C'].slice(0,2+rnd(2));
+  const game=new MultiplayerBoard(n,players), board=Array(n*n).fill(null);
+  let turn=0;
+  while (board.some(x=>x===null)) {
+    const cells=board.map((x,i)=>x===null?i:-1).filter(x=>x>=0);
+    const id=cells[rnd(cells.length)], player=players[turn%players.length];
+    board[id]=player;
+    const lines=[];
+    for (let i=0;i<n;i++) {
+      lines.push(Array.from({length:n},(_,j)=>i*n+j));
+      lines.push(Array.from({length:n},(_,j)=>j*n+i));
+    }
+    lines.push(Array.from({length:n},(_,j)=>j*n+j),Array.from({length:n},(_,j)=>j*n+n-1-j));
+    const won=lines.some(line=>line.every(i=>board[i]===player)), draw=!won && board.every(x=>x!==null);
+    eq(game.move(player,Math.floor(id/n),id%n),{winner:won?player:null,draw,next:won||draw?null:players[(turn+1)%players.length]});
+    if (won||draw) { throws(()=>game.move(player,0,0)); break; }
+    throws(()=>game.move(players[(turn+1)%players.length],Math.floor(id/n),id%n));
+    turn++;
+  }
+}
+const names=['A','B'], boardGame=new MultiplayerBoard(2,names);
+names[0]='changed';
+throws(()=>boardGame.move('B',0,0));
+throws(()=>boardGame.move('A',-1,0));
+throws(()=>boardGame.move('A',0.5,0));
+eq(boardGame.move('A',0,0),{winner:null,draw:false,next:'B'});
+throws(()=>new MultiplayerBoard(0,['A','B']));
+throws(()=>new MultiplayerBoard(2,['A','A']));
+for (let t=0;t<100;t++) {
+  const values=Array.from({length:rnd(15)},()=>rnd(20)-10), target=rnd(20)-10;
+  const result=twoSumIndices(values,target);
+  const exists=values.some((x,i)=>values.some((y,j)=>i!==j && x+y===target));
+  eq(result!==null,exists);
+  if (result) { ok(result[0]!==result[1]); eq(values[result[0]]+values[result[1]],target); }
+  for (const reverse of [reverseListIterative,reverseListRecursive]) {
+    const nodes=values.map(value=>({value,next:null}));
+    for(let i=0;i+1<nodes.length;i++) nodes[i].next=nodes[i+1];
+    let head=reverse(nodes[0]??null);
+    for(let i=nodes.length-1;i>=0;i--) { ok(head===nodes[i]); head=head.next; }
+    eq(head,null);
+  }
+}
+eq(twoSumIndices([3,3],6),[0,1]);
+eq(twoSumIndices([3],6),null);
+console.log('PASS: ' + checks + ' assertions across fourteen solution blocks.');
 `;
 vm.runInNewContext(code + '\n' + tests, { assert, console }, { timeout: 30000 });
 console.log(`Executed ${blocks.length} TypeScript blocks directly from Markdown (runtime checks only).`);

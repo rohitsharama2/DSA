@@ -2,7 +2,7 @@
 
 [Round-wise index](README.md)
 
-**Updated October 14, 2026 (India).** G1–G5 retain the October 9 research; the additions below were checked October 14. Focus: general SWE L5, weighted toward India/Bengaluru accounts. These are self-selected candidate narratives; they cannot establish current hiring odds, official scoring, question frequencies, or a universal loop.
+**Updated October 16, 2026 (India).** G1–G5 retain the October 9 research; G6–G8 were checked October 14; G9 and M1–M2 were checked October 16. Focus: general SWE L5, weighted toward India/Bengaluru accounts. These are self-selected candidate narratives; they cannot establish current hiring odds, official scoring, question frequencies, or a universal loop.
 
 | ID | Source | Date / access | Supported signal and limitation |
 | --- | --- | --- | --- |
@@ -36,3 +36,15 @@ G2 and G3 justify prioritizing topological modeling. G1/G2 broaden practice towa
 No paid company-tag database was accessed. Reposts, generic early-career reports, commercial interview-assistant marketing, and claims of a universal AI-assisted round are excluded from the L5 evidence base. Use recruiter instructions for the actual tools and format.
 
 Preserve the distinction between publication and interview dates when adding future reports. Record location, claimed level, firsthand/repost status, and whether a question was exact, reconstructed, or merely similar.
+
+## October 16 user-shared additions
+
+| ID | Source | Access / provenance | Supported signal and limitation |
+| --- | --- | --- | --- |
+| G9 | [Passed Google L5: broad interview coverage](https://www.reddit.com/r/OfferEngineering/comments/1v6bivx/passed_google_l5_none_of_the_questions_were/) | Full post read October 16, 2026; anonymized submission reposted by an account promoting Chill Interview; absolute publication/interview dates and location not established | Reports priority dispatch with category cooldown; top-to-bottom grid reachability, all paths, traversal costs and cheapest route; multiplayer N×N board win detection; personalized promotional offers; behavioral prompts. Unverified secondary narrative, not independent official evidence. Used only for attributed practice themes; rules and solutions in Q7–Q9 are ours |
+| M1 | [Mockd Google SWE demo](https://mockd.fyi/case/seed_1) via [user's filter](https://mockd.fyi/?q=google) | Public page and its `/api/bank` response read October 16; `seed_1` is explicitly rendered as Demo by the site; metadata submittedAt September 21, 2026 is not an interview date | Two Sum; iterative/recursive list reversal; complexity and edge-case discussion. No level or location stated. Q10–Q11 are foundational practice, not L5 question evidence |
+| M2 | [Mockd Google SRE demo](https://mockd.fyi/case/seed_11) | Same public bank, Demo entry; no level/location; submittedAt September 21, 2026 | Log collection across 10,000 servers / three data centers, sizing, data-center loss, SLOs and paging. Optional SRE transfer exercise, not a general SWE L5 report |
+
+The Google filter also contained a Product Manager demo (`seed_23`): transport accessibility, feature metrics and video-volume estimation. It is excluded from SWE questions because its role differs. At access time these were the three Google entries in the public bank; no generated mock or private practice session was started. Web retrieval initially failed for Mockd; direct HTTPS retrieval of the public page and its read-only bank succeeded.
+
+G9 is retained as a user-requested, explicitly labeled secondary theme source, an exception to the earlier exclusion of promotional reposts from the core L5 evidence base. It does not change the India round template or establish question frequency. Mockd demos are practice material only. Existing Q6 already covers Dijkstra; Q8 adds grid modeling, path enumeration and reconstruction rather than counting the generic algorithm as a new gap.
