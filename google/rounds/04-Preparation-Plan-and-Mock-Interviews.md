@@ -1,6 +1,6 @@
 # Google L5 India: preparation plan and mock workbook
 
-[Full interview guide](README.md) · [DSA](01-DSA-Coding-Questions-and-Solutions.md) · [Design](02-System-Design-and-Followups.md) · [Leadership](03-Leadership-and-Team-Matching.md)
+[Full interview guide](README.md) · [Recruiter screen](00-Recruiter-Screening.md) · [DSA](01-DSA-Coding-Questions-and-Solutions.md) · [Design](02-System-Design-and-Followups.md) · [Leadership](03-Leadership-and-Team-Matching.md)
 
 **Created October 14, 2026.** Default: 28 days, approximately two hours/day, TypeScript/JavaScript. Your interview date and daily availability are unconfirmed. Days are relative so the plan can start whenever you do. Extend it if the diagnostic exposes fundamentals gaps; compress only if performance supports that. This is a preparation plan, not a promise of clearing L5.
 
@@ -28,7 +28,7 @@ Question numbers refer to the DSA bank; Q1–Q6 are the worked local exercises. 
 | Day | Coding work | Design / leadership deliverable |
 | --- | --- | --- |
 | 1 | Diagnostic above | Initial score and two priorities |
-| 2 | #1 Course Schedule II; #2 alien ordering/Q1 | Two-minute recruiter introduction; list exact loop questions |
+| 2 | #1 Course Schedule II; #2 alien ordering/Q1 | [60–90-second recruiter introduction and 25-minute mock](00-Recruiter-Screening.md); list exact loop questions |
 | 3 | #4 multi-source BFS; #5 Word Ladder modeling | Cache scope, APIs and three capacity estimates |
 | 4 | #8/#32 DSU; Q3 timestamp connectivity | Cache stampede, hot key and stale-permission discussion |
 | 5 | #7/Q6 Dijkstra; draw BFS counterexample | Superset project: alternatives, rollout and savings evidence |

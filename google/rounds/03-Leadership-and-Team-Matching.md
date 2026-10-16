@@ -64,6 +64,8 @@ Practice a two-minute STAR: 20 seconds situation, 15 task, 60 actions/decisions,
 
 **Story card:** date/project; stakes; personal mandate; two alternatives; decision and why; collaborator's perspective; obstacle; outcome; measurement source; what failed; what you would change. Record gaps as unknown. Avoid blaming, claiming sole credit for shared work, or turning every failure into an effortless success.
 
+For the initial recruiter call, use the [dedicated screening workbook](00-Recruiter-Screening.md): it expands the introduction below into resume-specific project answers, role/level positioning, compensation/logistics prompts and a timed mock.
+
 ### Recruiter / manager introduction to adapt
 
 “I build full-stack enterprise and product workflows across React/TypeScript, Node.js and Python. My recent work includes analytics migration at Ushur, AI-assisted claims workflows at CoverSelf, and payment/reconciliation flows for Luckd. I enjoy owning the interaction between user-facing behavior and backend correctness. For this role, I'd like to understand which product or platform problems the team needs a senior engineer to own.”

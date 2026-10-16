@@ -4,6 +4,7 @@
 
 Start with the [complete round-wise guide](rounds/README.md), then follow the [28-day preparation and mock plan](rounds/04-Preparation-Plan-and-Mock-Interviews.md). This is general SWE / full-stack preparation; your team, specialty, interview date, and scheduled loop remain unconfirmed.
 
+- [Recruiter screening: tailored introduction, project answers, logistics and mock call](rounds/00-Recruiter-Screening.md)
 - [DSA patterns, prioritized questions, and worked solutions](rounds/01-DSA-Coding-Questions-and-Solutions.md)
 - [System design and changing-requirement follow-ups](rounds/02-System-Design-and-Followups.md)
 - [Leadership, project depth, and team matching](rounds/03-Leadership-and-Team-Matching.md)

@@ -1,6 +1,6 @@
 # Google L5 India: complete interview guide
 
-[Company index](../README.md) · [Sources and confidence](Research-Sources.md) · [Daily plan and mocks](04-Preparation-Plan-and-Mock-Interviews.md)
+[Company index](../README.md) · [Recruiter screening](00-Recruiter-Screening.md) · [Sources and confidence](Research-Sources.md) · [Daily plan and mocks](04-Preparation-Plan-and-Mock-Interviews.md)
 
 **Updated October 16, 2026.** Target: general SWE / full-stack L5 in India. Keep TypeScript/JavaScript as the preparation language; confirm permitted language and libraries with your recruiter. A strong preparation outcome is independently solving unfamiliar problems, defending design decisions, and demonstrating real ownership. It cannot guarantee selection or leveling.
 
@@ -10,7 +10,7 @@ The [October India report supplied by you](https://www.reddit.com/r/LeetcodeDesi
 
 | Stage | What to prepare | Concrete completion target |
 | --- | --- | --- |
-| Application / recruiter conversation | Role scope, resume, motivation, location, availability, relevant ownership | 90-second introduction; two projects; questions about the exact loop |
+| Application / recruiter conversation | Role scope, resume, motivation, location, availability, relevant ownership | [Tailored introduction, three project summaries and logistics sheet](00-Recruiter-Screening.md); questions about the exact loop |
 | Assessment, **only if invited** | Read the actual invitation; do not infer an OA or assessment type from new-grad reports | Know duration, format, permitted tools and deadline; no universal L5 OA is established here |
 | R1: coding qualification / screen | Modeling, constraints, working code, correctness and follow-ups | One unfamiliar 45-minute problem using the [DSA guide](01-DSA-Coding-Questions-and-Solutions.md) |
 | R2: Googleyness / leadership | Ambiguity, collaboration, disagreement, feedback, responsibility, learning | Six factual stories and live follow-ups using the [leadership workbook](03-Leadership-and-Team-Matching.md) |
@@ -42,6 +42,8 @@ October 16 adds Q7–Q9 (category-cooldown dispatch, grid follow-up ladder, mult
 Confirm the target level and generic SWE versus frontend/full-stack/domain scope; round count and duration; order of coding/leadership/design; remote versus office location; accepted language/runtime and built-in collections; editor, execution and drawing tools; any assessment; and permitted preparation aids during the actual interview. Ask for role-specific preparation materials and accommodations if needed. Follow the invitation; official [virtual-interview guidance](https://services.google.com/fh/files/misc/general_virtual_interviews_candidate_resource.pdf) covers setup, not a universal hiring loop.
 
 ## How to use this repository
+
+Start with the [personalized recruiter-screening workbook](00-Recruiter-Screening.md) if your next conversation is the initial recruiter call. It includes resume-grounded answers and a 25-minute mock.
 
 1. Do the Day 1 diagnostic in the [28-day plan](04-Preparation-Plan-and-Mock-Interviews.md) before reading solution code.
 2. Work through the 30 foundations plus thirteen October additions in the [DSA guide](01-DSA-Coding-Questions-and-Solutions.md). Spend more time explaining and varying a problem than counting solved questions.
