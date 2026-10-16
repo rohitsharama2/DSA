@@ -4,6 +4,10 @@
 
 **Updated October 16, 2026.** Target: general SWE / full-stack L5 in India. Keep TypeScript/JavaScript as the preparation language; confirm permitted language and libraries with your recruiter. A strong preparation outcome is independently solving unfamiliar problems, defending design decisions, and demonstrating real ownership. It cannot guarantee selection or leveling.
 
+**Current role:** Use the [Android Studio Tech Lead track](../android-studio-tech-lead/README.md) for your current Bengaluru interview. The sections below remain general SWE preparation; confirm the actual role-specific loop.
+
+[All questions and local answers](../solutions/README.md) gives direct access to code, design solutions, behavioral templates and mock follow-ups.
+
 ## The full process to prepare for
 
 The [October India report supplied by you](https://www.reddit.com/r/LeetcodeDesi/comments/1x56nee/google_l5_chances_with_lh_in_system_design_india/) describes screening coding + Googleyness, followed by two onsite coding rounds and system design. The [April India full-stack account and author comments](https://www.reddit.com/r/LeetcodeDesi/comments/1slxvll/cleared_google_l5_india_team_matching_taking_time/) also describe three coding interviews, one Googleyness, and one design in total. Use this as a working template, not a guaranteed sequence. Hiring review and matching can overlap or vary; additional interviews may be requested. [G5–G8](Research-Sources.md)

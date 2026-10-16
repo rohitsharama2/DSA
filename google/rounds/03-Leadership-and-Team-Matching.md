@@ -4,6 +4,8 @@
 
 Leadership and team-fit conversations appear in [G1](https://leetcode.com/discuss/post/6349651/google-l5-bangalore-selected-interview-e-3wj2/) and [G4](https://www.reddit.com/r/leetcode/comments/1k3iqyr/google_india_sr_software_eng_l5_hired_interview/). The prompts below are a practice workbook, not an official scoring rubric.
 
+Use the [behavioral answer companion](../solutions/Behavioral-Answers.md) for spoken templates and answers to every project follow-up. Fill personal-history gaps with your actual events.
+
 ## Prepare evidence of independent ownership
 
 Select two projects where you can explain the problem, your decisions, collaboration boundaries, delivery, and operational results. Rehearse both a two-minute overview and a technical deep dive. For an L5-targeted preparation exercise, emphasize taking an ambiguous project through implementation and helping others deliver; do not substitute job title or tenure for evidence.

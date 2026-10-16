@@ -4,40 +4,42 @@
 
 **Updated October 16, 2026.** P0 means first, P1 broadens coverage, P2 stretches a mastered pattern. These are study priorities, not company-frequency rankings. The 30 foundational linked problems plus thirteen October additions are practice analogues/foundations; the original implementations below are not claimed to reproduce interview questions.
 
+**Android Studio interview:** The [targeted 16-question JavaScript track](../android-studio-tech-lead/01-Coding-Track.md) maps the requested problems to this bank. [All Google solutions](../solutions/README.md) now provides local answers for every listed coding problem, plus design, behavioral and mock answers.
+
 ## Pattern-to-question bank
 
 | # | Priority / pattern | Practice link | Interview reasoning / follow-up |
 | --- | --- | --- | --- |
-| 1 | P0 topological order | [210 Course Schedule II](https://leetcode.com/problems/course-schedule-ii/) | Edge direction, duplicate constraints, cycles |
-| 2 | P0 topological modeling | [269 Alien Dictionary](https://leetcode.com/problems/alien-dictionary/) | First differing symbol, invalid prefix; Q1 is self-contained |
-| 3 | P0 dependency propagation | [2115 Find All Possible Recipes](https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/) | Which nodes are initially available? |
-| 4 | P0 BFS | [994 Rotting Oranges](https://leetcode.com/problems/rotting-oranges/) | Multi-source distance, unreachable cells |
-| 5 | P0 BFS | [127 Word Ladder](https://leetcode.com/problems/word-ladder/) | Neighbor generation and bidirectional search |
-| 6 | P0 0–1 BFS | [1368 Minimum Cost to Make at Least One Valid Path in a Grid](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/) | Directed edge cost; deque vs. ordinary BFS |
-| 7 | P0 shortest paths | [743 Network Delay Time](https://leetcode.com/problems/network-delay-time/) | Why nonnegative weights permit Dijkstra |
-| 8 | P0 connectivity | [684 Redundant Connection](https://leetcode.com/problems/redundant-connection/) | Union-find vs. traversal |
-| 9 | P0 connectivity | [721 Accounts Merge](https://leetcode.com/problems/accounts-merge/) | Shared identifiers, representative mapping |
-| 10 | P0 trees | [236 Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | Node identity and missing-node variants |
-| 11 | P0 trees | [297 Serialize and Deserialize Binary Tree](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) | Null markers and unambiguous grammar |
-| 12 | P0 intervals | [56 Merge Intervals](https://leetcode.com/problems/merge-intervals/) | Define adjacency and endpoint semantics |
-| 13 | P0 intervals | [729 My Calendar I](https://leetcode.com/problems/my-calendar-i/) | Online insertion and half-open ranges |
-| 14 | P0 hashing | [49 Group Anagrams](https://leetcode.com/problems/group-anagrams/) | Model a word problem as canonical keys |
-| 15 | P0 prefix sums | [560 Subarray Sum Equals K](https://leetcode.com/problems/subarray-sum-equals-k/) | Negative numbers break simple window logic |
-| 16 | P1 window | [76 Minimum Window Substring](https://leetcode.com/problems/minimum-window-substring/) | Count multiplicity and shrink invariant |
-| 17 | P1 heap | [23 Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) | Frontier heap size vs. total input size |
-| 18 | P1 heap | [295 Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/) | Partition and balance invariants |
-| 19 | P1 greedy / heap | [1167 Minimum Cost to Connect Sticks](https://leetcode.com/problems/minimum-cost-to-connect-sticks/) | Optimal merge; Q4 is self-contained |
-| 20 | P1 binary search | [410 Split Array Largest Sum](https://leetcode.com/problems/split-array-largest-sum/) | Feasibility relies on nonnegative numbers |
-| 21 | P1 binary search | [875 Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/) | Lower/upper bound proof |
-| 22 | P1 graph DP | [329 Longest Increasing Path in a Matrix](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) | Strict ordering induces a DAG |
-| 23 | P1 DP | [322 Coin Change](https://leetcode.com/problems/coin-change/) | State, recurrence, unreachable values |
-| 24 | P1 DP | [300 Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/) | Tails array is not itself the sequence |
-| 25 | P1 DP | [1143 Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/) | Two-prefix state; reconstructing a solution |
-| 26 | P1 backtracking | [22 Generate Parentheses](https://leetcode.com/problems/generate-parentheses/) | Prefix feasibility and output-sensitive cost |
-| 27 | P1 trie / search | [212 Word Search II](https://leetcode.com/problems/word-search-ii/) | Trie pruning, visited-state restoration |
-| 28 | P1 data structure | [146 LRU Cache](https://leetcode.com/problems/lru-cache/) | Map/list consistency under updates |
-| 29 | P2 shortest paths | [787 Cheapest Flights Within K Stops](https://leetcode.com/problems/cheapest-flights-within-k-stops/) | Layered state; cost alone is insufficient |
-| 30 | P2 weighted connectivity | [1631 Path With Minimum Effort](https://leetcode.com/problems/path-with-minimum-effort/) | Minimax path vs. sum; Dijkstra or union-find |
+| 1 | P0 topological order | [210 Course Schedule II](../solutions/Coding-Answers.md#lc-210) · [LeetCode practice](https://leetcode.com/problems/course-schedule-ii/) | Edge direction, duplicate constraints, cycles |
+| 2 | P0 topological modeling | [269 Alien Dictionary](../solutions/Coding-Answers.md#lc-269) · [LeetCode practice](https://leetcode.com/problems/alien-dictionary/) | First differing symbol, invalid prefix; Q1 is self-contained |
+| 3 | P0 dependency propagation | [2115 Find All Possible Recipes](../solutions/Coding-Answers.md#lc-2115) · [LeetCode practice](https://leetcode.com/problems/find-all-possible-recipes-from-given-supplies/) | Which nodes are initially available? |
+| 4 | P0 BFS | [994 Rotting Oranges](../solutions/Coding-Answers.md#lc-994) · [LeetCode practice](https://leetcode.com/problems/rotting-oranges/) | Multi-source distance, unreachable cells |
+| 5 | P0 BFS | [127 Word Ladder](../solutions/Coding-Answers.md#lc-127) · [LeetCode practice](https://leetcode.com/problems/word-ladder/) | Neighbor generation and bidirectional search |
+| 6 | P0 0–1 BFS | [1368 Minimum Cost to Make at Least One Valid Path in a Grid](../solutions/Coding-Answers.md#lc-1368) · [LeetCode practice](https://leetcode.com/problems/minimum-cost-to-make-at-least-one-valid-path-in-a-grid/) | Directed edge cost; deque vs. ordinary BFS |
+| 7 | P0 shortest paths | [743 Network Delay Time](../solutions/Coding-Answers.md#lc-743) · [LeetCode practice](https://leetcode.com/problems/network-delay-time/) | Why nonnegative weights permit Dijkstra |
+| 8 | P0 connectivity | [684 Redundant Connection](../solutions/Coding-Answers.md#lc-684) · [LeetCode practice](https://leetcode.com/problems/redundant-connection/) | Union-find vs. traversal |
+| 9 | P0 connectivity | [721 Accounts Merge](../solutions/Coding-Answers.md#lc-721) · [LeetCode practice](https://leetcode.com/problems/accounts-merge/) | Shared identifiers, representative mapping |
+| 10 | P0 trees | [236 Lowest Common Ancestor of a Binary Tree](../solutions/Coding-Answers.md#lc-236) · [LeetCode practice](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/) | Node identity and missing-node variants |
+| 11 | P0 trees | [297 Serialize and Deserialize Binary Tree](../solutions/Coding-Answers.md#lc-297) · [LeetCode practice](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/) | Null markers and unambiguous grammar |
+| 12 | P0 intervals | [56 Merge Intervals](../solutions/Coding-Answers.md#lc-56) · [LeetCode practice](https://leetcode.com/problems/merge-intervals/) | Define adjacency and endpoint semantics |
+| 13 | P0 intervals | [729 My Calendar I](../solutions/Coding-Answers.md#lc-729) · [LeetCode practice](https://leetcode.com/problems/my-calendar-i/) | Online insertion and half-open ranges |
+| 14 | P0 hashing | [49 Group Anagrams](../solutions/Coding-Answers.md#lc-49) · [LeetCode practice](https://leetcode.com/problems/group-anagrams/) | Model a word problem as canonical keys |
+| 15 | P0 prefix sums | [560 Subarray Sum Equals K](../solutions/Coding-Answers.md#lc-560) · [LeetCode practice](https://leetcode.com/problems/subarray-sum-equals-k/) | Negative numbers break simple window logic |
+| 16 | P1 window | [76 Minimum Window Substring](../solutions/Coding-Answers.md#lc-76) · [LeetCode practice](https://leetcode.com/problems/minimum-window-substring/) | Count multiplicity and shrink invariant |
+| 17 | P1 heap | [23 Merge k Sorted Lists](../solutions/Coding-Answers.md#lc-23) · [LeetCode practice](https://leetcode.com/problems/merge-k-sorted-lists/) | Frontier heap size vs. total input size |
+| 18 | P1 heap | [295 Find Median from Data Stream](../solutions/Coding-Answers.md#lc-295) · [LeetCode practice](https://leetcode.com/problems/find-median-from-data-stream/) | Partition and balance invariants |
+| 19 | P1 greedy / heap | [1167 Minimum Cost to Connect Sticks](../solutions/Coding-Answers.md#lc-1167) · [LeetCode practice](https://leetcode.com/problems/minimum-cost-to-connect-sticks/) | Optimal merge; Q4 is self-contained |
+| 20 | P1 binary search | [410 Split Array Largest Sum](../solutions/Coding-Answers.md#lc-410) · [LeetCode practice](https://leetcode.com/problems/split-array-largest-sum/) | Feasibility relies on nonnegative numbers |
+| 21 | P1 binary search | [875 Koko Eating Bananas](../solutions/Coding-Answers.md#lc-875) · [LeetCode practice](https://leetcode.com/problems/koko-eating-bananas/) | Lower/upper bound proof |
+| 22 | P1 graph DP | [329 Longest Increasing Path in a Matrix](../solutions/Coding-Answers.md#lc-329) · [LeetCode practice](https://leetcode.com/problems/longest-increasing-path-in-a-matrix/) | Strict ordering induces a DAG |
+| 23 | P1 DP | [322 Coin Change](../solutions/Coding-Answers.md#lc-322) · [LeetCode practice](https://leetcode.com/problems/coin-change/) | State, recurrence, unreachable values |
+| 24 | P1 DP | [300 Longest Increasing Subsequence](../solutions/Coding-Answers.md#lc-300) · [LeetCode practice](https://leetcode.com/problems/longest-increasing-subsequence/) | Tails array is not itself the sequence |
+| 25 | P1 DP | [1143 Longest Common Subsequence](../solutions/Coding-Answers.md#lc-1143) · [LeetCode practice](https://leetcode.com/problems/longest-common-subsequence/) | Two-prefix state; reconstructing a solution |
+| 26 | P1 backtracking | [22 Generate Parentheses](../solutions/Coding-Answers.md#lc-22) · [LeetCode practice](https://leetcode.com/problems/generate-parentheses/) | Prefix feasibility and output-sensitive cost |
+| 27 | P1 trie / search | [212 Word Search II](../solutions/Coding-Answers.md#lc-212) · [LeetCode practice](https://leetcode.com/problems/word-search-ii/) | Trie pruning, visited-state restoration |
+| 28 | P1 data structure | [146 LRU Cache](../solutions/Coding-Answers.md#lc-146) · [LeetCode practice](https://leetcode.com/problems/lru-cache/) | Map/list consistency under updates |
+| 29 | P2 shortest paths | [787 Cheapest Flights Within K Stops](../solutions/Coding-Answers.md#lc-787) · [LeetCode practice](https://leetcode.com/problems/cheapest-flights-within-k-stops/) | Layered state; cost alone is insufficient |
+| 30 | P2 weighted connectivity | [1631 Path With Minimum Effort](../solutions/Coding-Answers.md#lc-1631) · [LeetCode practice](https://leetcode.com/problems/path-with-minimum-effort/) | Minimax path vs. sum; Dijkstra or union-find |
 
 Topological and 0–1 path themes have candidate support in G2/G3. G1 supplies analogous tree/Huffman and router-connectivity themes. The remaining breadth is our preparation recommendation. Premium availability may vary; use the local contracts for the two premium-style exercises.
 
@@ -228,14 +230,14 @@ The [October 13 India report](https://www.reddit.com/r/LeetcodeDesi/comments/1x5
 
 | # | Priority | Practice link | Why and what to explain |
 | --- | --- | --- | --- |
-| 31 | P0 DP | [2463 Minimum Total Distance Traveled](https://leetcode.com/problems/minimum-total-distance-traveled/) | G6 analogy; Q5 below: capacities defeat naive nearest-factory assignment |
-| 32 | P0 DSU | [1319 Number of Operations to Make Network Connected](https://leetcode.com/problems/number-of-operations-to-make-network-connected/) | Transfer from connectivity; count components and distinguish redundant cables from missing edges |
-| 33 | P1 DSU | [947 Most Stones Removed with Same Row or Column](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/) | Model shared attributes as connectivity; proof for stones minus components |
-| 34 | P1 weighted paths | [1514 Path with Maximum Probability](https://leetcode.com/problems/path-with-maximum-probability/) | Transfer: max-product relaxation; explain assumptions for finalization |
-| 35 | P0 pointers + map | [138 Copy List with Random Pointer](https://leetcode.com/problems/copy-list-with-random-pointer/) | G8 category analogue; map node identity, not value; prove no original links remain |
-| 36 | P1 pointers | [143 Reorder List](https://leetcode.com/problems/reorder-list/) | Breadth: split, reverse, merge; odd/even length, avoid cycles |
-| 37 | P1 tree | [124 Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/) | G8 category analogue; distinguish upward contribution from completed path; all-negative input |
-| 38 | P1 heap | [347 Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) | Transfer to dashboard thinking; grouped frequencies differ from largest individual events |
+| 31 | P0 DP | [2463 Minimum Total Distance Traveled](../solutions/Coding-Answers.md#lc-2463) · [LeetCode practice](https://leetcode.com/problems/minimum-total-distance-traveled/) | G6 analogy; Q5 below: capacities defeat naive nearest-factory assignment |
+| 32 | P0 DSU | [1319 Number of Operations to Make Network Connected](../solutions/Coding-Answers.md#lc-1319) · [LeetCode practice](https://leetcode.com/problems/number-of-operations-to-make-network-connected/) | Transfer from connectivity; count components and distinguish redundant cables from missing edges |
+| 33 | P1 DSU | [947 Most Stones Removed with Same Row or Column](../solutions/Coding-Answers.md#lc-947) · [LeetCode practice](https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/) | Model shared attributes as connectivity; proof for stones minus components |
+| 34 | P1 weighted paths | [1514 Path with Maximum Probability](../solutions/Coding-Answers.md#lc-1514) · [LeetCode practice](https://leetcode.com/problems/path-with-maximum-probability/) | Transfer: max-product relaxation; explain assumptions for finalization |
+| 35 | P0 pointers + map | [138 Copy List with Random Pointer](../solutions/Coding-Answers.md#lc-138) · [LeetCode practice](https://leetcode.com/problems/copy-list-with-random-pointer/) | G8 category analogue; map node identity, not value; prove no original links remain |
+| 36 | P1 pointers | [143 Reorder List](../solutions/Coding-Answers.md#lc-143) · [LeetCode practice](https://leetcode.com/problems/reorder-list/) | Breadth: split, reverse, merge; odd/even length, avoid cycles |
+| 37 | P1 tree | [124 Binary Tree Maximum Path Sum](../solutions/Coding-Answers.md#lc-124) · [LeetCode practice](https://leetcode.com/problems/binary-tree-maximum-path-sum/) | G8 category analogue; distinguish upward contribution from completed path; all-negative input |
+| 38 | P1 heap | [347 Top K Frequent Elements](../solutions/Coding-Answers.md#lc-347) · [LeetCode practice](https://leetcode.com/problems/top-k-frequent-elements/) | Transfer to dashboard thinking; grouped frequencies differ from largest individual events |
 
 Already in the bank: #7 Network Delay Time, #8–9 connectivity, #10–11 trees, #28 LRU. Repeat these with new constraints instead of counting them as new questions.
 
@@ -359,13 +361,15 @@ function weightedDistances(
 
 | # | Priority / drill | Worked solution | Gap addressed |
 | --- | --- | --- | --- |
-| 39 | P0 priority dispatch with category cooldown | Q7 | Priority among eligible categories; release timing and idle slots |
-| 40 | P0 top-to-bottom grid paths | Q8 | Reachability → every simple path → cheapest path; extends Q6 |
-| 41 | P0 multiplayer N×N board | Q9 | Stateful API, validation, constant-time win checks |
-| 42 | P1 warm-up: Two Sum | Q10 | Mockd SWE demo; complement lookup and duplicate values |
-| 43 | P1 warm-up: reverse a linked list | Q11 | Mockd SWE demo; iterative and recursive pointer invariants |
+| 39 | P0 priority dispatch with category cooldown | [Q7](#bank-39) | Priority among eligible categories; release timing and idle slots |
+| 40 | P0 top-to-bottom grid paths | [Q8](#bank-40) | Reachability → every simple path → cheapest path; extends Q6 |
+| 41 | P0 multiplayer N×N board | [Q9](#bank-41) | Stateful API, validation, constant-time win checks |
+| 42 | P1 warm-up: Two Sum | [Q10](#bank-42) | Mockd SWE demo; complement lookup and duplicate values |
+| 43 | P1 warm-up: reverse a linked list | [Q11](#bank-43) | Mockd SWE demo; iterative and recursive pointer invariants |
 
 For a 45-minute L5 mock, use Q7, Q8 or Q9 as the main exercise; Q10–Q11 are warm-ups. Practice the changed requirement only after stating and testing the base contract. See the design workbook's sections 6–7 for promotional offers and the optional SRE log-system drill. Mockd's PM demo is outside this SWE guide.
+
+<a id="bank-39"></a>
 
 ## Q7. Priority dispatcher with category cooldown
 
@@ -452,6 +456,8 @@ function dispatchTasks(tasks: DispatchTask[], cooldown: number): { slot: number;
 
 **Tests / L5 follow-ups:** Empty input, zero cooldown, one category, ties, negative priorities, and cooldown larger than task count. For per-category cooldowns replace the FIFO with a release-time heap. For online arrivals use category heaps and carefully invalidate outdated ready entries. If only successful operations advance cooldown, all categories can become blocked forever; specify deadlock behavior. Discuss starvation under an unbounded stream of high-priority tasks.
 
+<a id="bank-40"></a>
+
 ## Q8. Top-to-bottom grid: existence, all paths, cheapest route
 
 **Evidence:** G9 supplies this follow-up ladder; Q6 already covers general weighted shortest paths. **Clarify:** Four directions or downward only? Obstacles? May a cell repeat? Cost of entering a cell or traversing an edge? Is the starting cell charged?
@@ -537,6 +543,8 @@ function cheapestGridRoute(grid: (number | null)[][]): { cost: number; path: num
 
 **Tests / L5 follow-ups:** Empty/all-blocked grids, one row, disconnected bottom, zero-cost cycles, two routes sharing a cell, and a longer route cheaper than a shorter one. Stream enumeration with a generator to avoid storing all output; impose a path/result limit for practical use. Down/right-only movement creates a DAG and permits DP; negative costs need a different shortest-path contract. Do not use one global visited set when enumerating paths.
 
+<a id="bank-41"></a>
+
 ## Q9. Multiplayer N×N board with constant-time win detection
 
 **Evidence:** G9 reports an N×N multiplayer board and avoiding a full scan after each move; exact win rules are unspecified. **Our contract:** At least two distinct named players alternate cyclically. A player wins by filling one entire row, column, or either full-length diagonal on an `N×N` board. `N>=1`; reject out-of-turn, occupied, out-of-bounds and post-game moves without changing state. Return winner, draw or next player.
@@ -586,6 +594,9 @@ class MultiplayerBoard {
 **Correctness:** Each counter equals that player's legal occupied cells in one line. Unique occupancy prevents double counting. Only lines through the new cell can become complete, and their counts equal `N` exactly when that player fills the line. Validate before mutation, then stop the game on victory or draw.
 
 **Complexity:** Expected `O(1)` per move using maps/sets (bounded-size coordinate keys); `O(P+m)` space after `m` moves for `P` players, at most `O(P+N²)`. Sparse counters avoid allocating `P×N` arrays. **Tests / follow-ups:** `N=1`, three players, every winning direction, draw, duplicate and invalid moves, caller mutation of the player array. For `K<N` contiguous wins, counts alone are insufficient: scan outward from the move in four directions in `O(K)` or maintain directional segments. Undo needs move history and terminal-state restoration; concurrent moves need authoritative sequencing.
+
+<a id="bank-42"></a>
+<a id="bank-43"></a>
 
 ## Q10–Q11. Mockd SWE demo warm-ups: Two Sum and linked-list reversal
 

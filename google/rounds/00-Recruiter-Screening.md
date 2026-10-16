@@ -6,6 +6,8 @@
 
 Use **20–30 minutes as a rehearsal format**, based on your notes. The actual invitation determines duration, phone/Meet format, assessments and technical content. This guide prepares an initial fit conversation; it does not assert an official Google process or leveling rubric. Suggested motivations below need to match your real reasons. Bracketed fields are facts to fill in, not words to recite.
 
+**Current target update:** You have now identified Senior Software Engineer / Tech Lead, Android Studio — Bengaluru. Use the [role-specific introduction and fit questions](../android-studio-tech-lead/04-Role-Fit-and-Domain.md) alongside this workbook. Exact requisition, formal level, subsystem and assessment format are still unconfirmed.
+
 ## Your one-page call sheet
 
 | Topic | Your concise answer / fact |

@@ -2,7 +2,11 @@
 
 **Updated October 16, 2026. Target: Google L5 / Senior SWE, India. Language: Node.js + TypeScript.**
 
-Start with the [complete round-wise guide](rounds/README.md), then follow the [28-day preparation and mock plan](rounds/04-Preparation-Plan-and-Mock-Interviews.md). This is general SWE / full-stack preparation; your team, specialty, interview date, and scheduled loop remain unconfirmed.
+**Current interview target:** [Senior Software Engineer / Tech Lead — Android Studio, Bengaluru](android-studio-tech-lead/README.md). Start that track for the assessment, targeted JavaScript questions, IDE design and leadership practice.
+
+**Solutions:** [All Google questions and local answers](solutions/README.md) — coding implementations, design answers, behavioral templates and mock follow-ups.
+
+Start with the [complete round-wise guide](rounds/README.md), then follow the [28-day preparation and mock plan](rounds/04-Preparation-Plan-and-Mock-Interviews.md). This is general SWE / full-stack preparation; Android Studio is your current product target; the exact subsystem, requisition, interview date, formal level and scheduled loop remain unconfirmed.
 
 - [Recruiter screening: tailored introduction, project answers, logistics and mock call](rounds/00-Recruiter-Screening.md)
 - [DSA patterns, prioritized questions, and worked solutions](rounds/01-DSA-Coding-Questions-and-Solutions.md)

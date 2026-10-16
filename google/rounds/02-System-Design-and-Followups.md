@@ -4,6 +4,8 @@
 
 Cache and news/feed designs appear in [G1](https://leetcode.com/discuss/post/6349651/google-l5-bangalore-selected-interview-e-3wj2/); G2 also describes a feed. The exercises and answer outlines below are **original preparation material**. They do not establish official Google design questions or ratings.
 
+[Design-answer index](../solutions/Design-Answers.md) links every design and provides full answers for the scheduler, metrics, collaboration and full-stack extension prompts.
+
 ## 1. Distributed cache
 
 **Practice contract:** Design a shared cache for expensive metadata reads. Establish whether the cache is disposable, freshness requirements, key/value size, read/write mix, and what happens when the origin is unavailable.
@@ -45,9 +47,9 @@ These are transfer exercises, not additional reported Google questions.
 
 | Prompt | Core decisions | Follow-up |
 | --- | --- | --- |
-| Distributed task scheduler | Durable jobs, leases, retries, idempotent execution, partition ownership | Worker stalls after performing side effects but before acknowledging |
-| Metrics ingestion service | Partition key, buffering, retention, rollups, cardinality limits | Late/duplicate data and a tenant with explosive labels |
-| Collaborative document service | Operation ordering, conflict model, offline edits, snapshots | Access revoked while a user is offline |
+| [Distributed task scheduler — solution](../solutions/Design-Answers.md#task-scheduler) | Durable jobs, leases, retries, idempotent execution, partition ownership | Worker stalls after performing side effects but before acknowledging |
+| [Metrics ingestion service — solution](../solutions/Design-Answers.md#metrics) | Partition key, buffering, retention, rollups, cardinality limits | Late/duplicate data and a tenant with explosive labels |
+| [Collaborative document service — solution](../solutions/Design-Answers.md#collaboration) | Operation ordering, conflict model, offline edits, snapshots | Access revoked while a user is offline |
 
 ## L5 design rehearsal
 
@@ -130,6 +132,8 @@ Use event time, a lateness allowance/watermark, and a policy for later arrivals:
 **Your preparation task:** Draw the real Luckd flow from memory, mark precisely which of these mechanisms you actually implemented, and identify the rest as design improvements. Prepare one race-condition timeline and one incident/recovery example with evidence. Do not invent transaction volume, availability or ownership.
 
 ## Full-stack extensions, if the recruiter confirms them
+
+[Answers to all eight extension prompts](../solutions/Design-Answers.md#full-stack).
 
 These are tailored practice, not reported universal rounds: dashboard pagination and server filtering; cancellation of stale requests; query-cache invalidation and permission changes; large-table virtualization; accessibility and loading/error states; client-versus-server aggregation; offline IndexedDB schema/version management; browser memory limits for DuckDB-WASM. Explain how correctness and privacy survive client caching, and how you would measure latency before and after an optimization.
 

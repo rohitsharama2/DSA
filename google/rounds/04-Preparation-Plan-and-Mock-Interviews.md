@@ -4,6 +4,8 @@
 
 **Created October 14, 2026.** Default: 28 days, approximately two hours/day, TypeScript/JavaScript. Your interview date and daily availability are unconfirmed. Days are relative so the plan can start whenever you do. Extend it if the diagnostic exposes fundamentals gaps; compress only if performance supports that. This is a preparation plan, not a promise of clearing L5.
 
+For your current Android Studio application, follow the [role-specific 28-day plan](../android-studio-tech-lead/05-Four-Week-Plan.md). Keep this general plan as a foundation/reference rather than attempting both schedules at once.
+
 ## Day 1: measure before studying
 
 Do not read the worked solutions first. Record how much help you needed, time to a correct model, implementation bugs, missed edge cases and follow-up handling. “I recognize the title” is not evidence of mastery.
@@ -73,6 +75,8 @@ Score each dimension 0 = missing/incorrect, 1 = partial or required substantial 
 | Leadership | Specific situation/mandate; individual decisions; collaboration; outcome/evidence; reflection | Six defensible stories; at least 8/10 in two mocks; no invented facts |
 
 A memorized prompt is a rehearsal, not an unseen mock. Passing thresholds is a useful study signal, not a hiring prediction. Ask a partner to challenge your proof and design assumptions; self-scoring alone is easy to inflate.
+
+[Mock answer guide](../solutions/Mock-Answers.md) covers packets A–F, the deployment diagnostic and changed requirements. Read it after your attempt.
 
 ## Mock packets: use without reading the answers
 
