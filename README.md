@@ -4,6 +4,8 @@ A structured DSA, Computer Science, System Design, and AI interview-preparation 
 
 ## Start here
 
+- [MAANG senior system-design questions and follow-ups](handbook/MAANG-Senior-System-Design.md) - 15 original mocks, senior/staff extensions, failure drills, self-review rubric and two-week rotation
+
 - [Local SWE Interview Coach setup and usage](coach/README.md) - installed Claude Code plugin, Codex framework skills, practice commands, and personal workspace
 
 - [Stripe experienced SWE interview preparation](stripe/rounds/README.md) - multipart coding, API integration, bug squash, design, and project/leadership practice

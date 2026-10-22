@@ -16,6 +16,7 @@ A [matching official Google posting](https://www.google.com/about/careers/applic
 | Coding assessment / first coding round | [16-question coding track](01-Coding-Track.md) | Timed JavaScript solution, explanation and adversarial tests |
 | Initial recruiter / role-fit discussion | [Role fit and Android Studio foundations](04-Role-Fit-and-Domain.md) + [recruiter workbook](../rounds/00-Recruiter-Screening.md) | Specific introduction and an honest Java/Kotlin/IDE experience answer |
 | Design preparation | [Six system-design mocks](03-System-Design.md) | Requirements, estimates, one design and two defended deep dives |
+| Broader senior design practice | [15 MAANG design questions and follow-ups](../../handbook/MAANG-Senior-System-Design.md) | Cross-company practice with correctness, scale, failure and staff-level extensions |
 | Daily preparation | [28-day plan](05-Four-Week-Plan.md) | Daily evidence, not just a completion checkbox |
 
 Your notes propose 45% coding, 20% judgment, 20% design, 10% domain and 5% leadership. Use this as a provisional study allocation, not a hiring rubric. If the invitation is a workplace questionnaire, make that the immediate focus; if it is coding, prioritize coding. Do not spend the last day before an assessment studying unrelated IDE internals.
