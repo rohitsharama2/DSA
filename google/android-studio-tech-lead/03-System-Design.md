@@ -4,6 +4,8 @@
 
 For broader senior-level preparation, use the [15-question MAANG system-design bank](../../handbook/MAANG-Senior-System-Design.md), including senior follow-ups, staff/tech-lead extensions and a self-review rubric. Its remote-build, search and collaborative-editor exercises complement these domain mocks.
 
+For AI-assisted IDE and agent-platform practice, use [Applied AI interview preparation](../../handbook/Applied-AI-Interview-Preparation.md), especially the coding-assistant, retrieval, tool-safety and evaluation exercises.
+
 These are original interview exercises expanding the six prompts in your notes. They are **not descriptions of Google's internal architecture or verified interview questions**. Use 45 minutes: requirements 5, high-level design including estimates 10, two deep dives 20, failure challenges and recap 10. Define interfaces and data before naming technologies.
 
 For every mock state expected load, latency/freshness, durability, offline behavior and trust boundaries. Draw the design yourself, then trace one success and one failure. Numbers below are illustrative assumptions to practice arithmetic, not product metrics.

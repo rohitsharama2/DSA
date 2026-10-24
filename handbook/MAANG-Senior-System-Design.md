@@ -2,6 +2,8 @@
 
 [Repository index](../README.md) · [Google design practice](../google/rounds/02-System-Design-and-Followups.md) · [Android Studio design mocks](../google/android-studio-tech-lead/03-System-Design.md)
 
+For applied-AI questions—RAG, tool-using assistants, evaluation, guardrails and resume-based stories—use [Applied AI interview preparation](Applied-AI-Interview-Preparation.md).
+
 These are **15 original practice exercises**, grouped by product domains associated with Meta, Amazon, Apple, Netflix and Google. They are not verified interview questions, descriptions of internal architectures, or official hiring rubrics. Company, team and level expectations vary; use the groups for breadth rather than predicting a particular round. All workloads and targets below are hypothetical interview assumptions.
 
 Senior practice emphasizes owning a bounded system end to end: requirements, interfaces, data, correctness, capacity and operations. Staff/tech-lead extensions add cross-team contracts, migration, competing priorities and decisions under uncertainty. These are practice distinctions, not equivalent job levels across companies.
